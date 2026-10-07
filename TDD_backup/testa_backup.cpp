@@ -199,7 +199,7 @@ TEST_CASE("Teste 5 - Backup.parm existe, backup e HD desatualizado") {
   REQUIRE(acao == backup.Resultado::ERRO);
 }
 
-TEST_CASE("Teste 2 - Backup.parm existe, sem backup e arquivo só no HD") {
+TEST_CASE("Teste 6 - Backup.parm existe, sem backup e arquivo só no HD") {
   Backup backup = CriarBackup();
   // Caminhos Backup.parm, HD e Pendrive
   const char* caminho_hd = "../HD/arquivo.txt";
@@ -221,6 +221,43 @@ TEST_CASE("Teste 2 - Backup.parm existe, sem backup e arquivo só no HD") {
   std::ofstream arquivo_parm(caminho_parm);
   arquivo_parm << "arquivo.txt";
   arquivo_parm.close();
+
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminho_parm,
+                                              caminho_hd,
+                                              caminho_pendrive);
+
+  REQUIRE(acao == backup.Resultado::ERRO);
+}
+
+TEST_CASE("Teste 7 - Backup.parm existe, sem backup e Pendrive desatualizado") {
+  Backup backup = CriarBackup();
+  // Caminhos Backup.parm, HD e Pendrive
+  const char* caminho_hd = "../HD/arquivo.txt";
+  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
+  const std::string caminho_parm = "../Backup.parm";
+
+  // Decisão de fazer backup
+  bool fazer_backup = false;
+
+  // Garantir que há arquivo com conteúdo em Pendrive
+  std::ofstream arquivo_pendrive(caminho_pendrive);
+  arquivo_pendrive << "conteudo original do pendrive";
+  arquivo_pendrive.close();
+
+  // Garantir que há arquivo com conteúdo em HD
+  std::ofstream arquivo_hd(caminho_hd);
+  arquivo_hd << "conteudo original do hd";
+  arquivo_hd.close();
+
+  // Garantir que Backup.parm existe
+  std::ofstream arquivo_parm(caminho_parm);
+  arquivo_parm << "arquivo.txt";
+  arquivo_parm.close();
+
+  // Garantir que o Pendrive está a mais tempo sem alterar
+  ModificarDataArquivo(caminho_pendrive, 0);
+  ModificarDataArquivo(caminho_hd, 86400);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
                                               caminho_parm,
