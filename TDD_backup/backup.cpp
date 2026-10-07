@@ -47,7 +47,7 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
     std::ofstream output_arquivo_pendrive(caminho_pendrive.c_str());
     output_arquivo_pendrive << input_arquivo_hd.rdbuf();
     return SALVAR;
-  } 
+  }
 
   return NADA;
 }

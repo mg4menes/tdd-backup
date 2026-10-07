@@ -1,8 +1,8 @@
 // Copyright 2026 Marcello da Silva Mangueira
 
+#include <utime.h>
 #include <string>
 #include <cstdio>
-#include <utime.h>
 #include "backup.hpp"  // NOLINT(build/include_subdir)
 
 #define CATCH_CONFIG_NO_POSIX_SIGNALS
@@ -20,6 +20,21 @@ Backup CriarBackup() {
   Backup backup;
   return backup;
 }
+
+/**
+ * @brief Modifica a data de modificação e acesso de um arquivo.
+ * Recebe os argumentos de caminho do arquivo e
+ * o horario em que ele será alterado.
+ * @param caminho_arquivo Caminho do arquivo que terá data modificada.
+ * @param horario Horário da modificação.
+ */
+void ModificarDataArquivo(const std::string& caminho_arquivo, time_t horario) {
+  struct utimbuf tempo_arquivo;
+  tempo_arquivo.actime = horario;
+  tempo_arquivo.modtime = horario;
+  utime(caminho_arquivo.c_str(), &tempo_arquivo);
+}
+
 
 TEST_CASE("Teste 1 - Backup.parm não existe") {
   Backup backup = CriarBackup();
@@ -39,7 +54,7 @@ TEST_CASE("Teste 1 - Backup.parm não existe") {
   REQUIRE(acao == backup.Resultado::IMPOSSIVEL);
 }
 
-TEST_CASE("Teste 2 - Backup.parm existe, quer backup e arquivo só no HD") {
+TEST_CASE("Teste 2 - Backup.parm existe, backup e arquivo só no HD") {
   Backup backup = CriarBackup();
   // Caminhos Backup.parm, HD e Pendrive
   const char* caminho_hd = "../HD/arquivo.txt";
@@ -69,7 +84,7 @@ TEST_CASE("Teste 2 - Backup.parm existe, quer backup e arquivo só no HD") {
   REQUIRE(acao == backup.Resultado::SALVAR);
 }
 
-TEST_CASE("Teste 3 - Backup.parm existe, quer backup e Pendrive desatualizado") {
+TEST_CASE("Teste 3 - Backup.parm existe, backup e Pendrive desatualizado") {
   Backup backup = CriarBackup();
   // Caminhos Backup.parm, HD e Pendrive
   const char* caminho_hd = "../HD/arquivo.txt";
@@ -95,16 +110,8 @@ TEST_CASE("Teste 3 - Backup.parm existe, quer backup e Pendrive desatualizado") 
   arquivo_parm.close();
 
   // Garantir que o Pendrive está a mais tempo sem alterar
-  // Modificando manualmente a hora de acesso e modificação para o teste
-  struct utimbuf tempo_pendrive;
-  tempo_pendrive.actime = 0;  // Dia 0
-  tempo_pendrive.modtime = 0;
-  utime(caminho_pendrive, &tempo_pendrive);
-
-  struct utimbuf tempo_hd;
-  tempo_hd.actime = 86400;
-  tempo_hd.modtime = 86400;  // Dia 1
-  utime(caminho_pendrive, &tempo_hd);
+  ModificarDataArquivo(caminho_pendrive, 0);
+  ModificarDataArquivo(caminho_hd, 86400);
 
   Backup::Resultado acao = backup.FazerBackup(caminho_parm,
                                               caminho_hd,
