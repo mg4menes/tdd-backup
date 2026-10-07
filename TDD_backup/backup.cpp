@@ -1,6 +1,7 @@
 // Copyright 2026 Marcello da Silva Mangueira
 
 #include "backup.hpp"  // NOLINT(build/include_subdir)
+#include <sys/stat.h>
 #include <string>
 #include <cassert>
 
@@ -35,6 +36,18 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
     output_arquivo_pendrive << input_arquivo_hd.rdbuf();
     return SALVAR;
   }
+
+  // Resgata os tempos do Pendrive e HD e compara
+  struct stat tempo_pendrive;
+  stat(caminho_pendrive.c_str(), &tempo_pendrive);
+  struct stat tempo_hd;
+  stat(caminho_hd.c_str(), &tempo_hd);
+
+  if (tempo_pendrive.st_mtime < tempo_hd.st_mtime) {
+    std::ofstream output_arquivo_pendrive(caminho_pendrive.c_str());
+    output_arquivo_pendrive << input_arquivo_hd.rdbuf();
+    return SALVAR;
+  } 
 
   return NADA;
 }

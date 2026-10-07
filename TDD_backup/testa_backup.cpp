@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cstdio>
+#include <utime.h>
 #include "backup.hpp"  // NOLINT(build/include_subdir)
 
 #define CATCH_CONFIG_NO_POSIX_SIGNALS
@@ -92,6 +93,18 @@ TEST_CASE("Teste 3 - Backup.parm existe, quer backup e Pendrive desatualizado") 
   std::ofstream arquivo_parm(caminho_parm);
   arquivo_parm << "arquivo.txt";
   arquivo_parm.close();
+
+  // Garantir que o Pendrive está a mais tempo sem alterar
+  // Modificando manualmente a hora de acesso e modificação para o teste
+  struct utimbuf tempo_pendrive;
+  tempo_pendrive.actime = 0;  // Dia 0
+  tempo_pendrive.modtime = 0;
+  utime(caminho_pendrive, &tempo_pendrive);
+
+  struct utimbuf tempo_hd;
+  tempo_hd.actime = 86400;
+  tempo_hd.modtime = 86400;  // Dia 1
+  utime(caminho_pendrive, &tempo_hd);
 
   Backup::Resultado acao = backup.FazerBackup(caminho_parm,
                                               caminho_hd,
