@@ -12,7 +12,7 @@
 // Cada teste equivale a uma coluna da tabela de decisão
 // da aula de testes em caixa fechada.
 
-// O conteúdo que está sendo espelhado entre o HD e o 
+// O conteúdo que está sendo espelhado entre o HD e o
 // pendrive é um arquivo.txt
 
 Backup CriarBackup() {
@@ -31,18 +31,22 @@ TEST_CASE("Teste 1 - Backup.parm não existe") {
   // Garantir que Backup.parm não existe
   std::remove(caminho_parm.c_str());
 
-  Backup::Resultado acao = backup.FazerBackup(caminho_parm, caminho_hd, caminho_pendrive);
+  Backup::Resultado acao = backup.FazerBackup(caminho_parm,
+                                              caminho_hd,
+                                              caminho_pendrive);
 
   REQUIRE(acao == backup.Resultado::IMPOSSIVEL);
 }
 
-TEST_CASE("Teste 2 - Backup.parm existe, quer fazer backup e arquivo somente no HD") {
+TEST_CASE("Teste 2 - Backup.parm existe, quer backup e arquivo só no HD") {
   Backup backup = CriarBackup();
   // Caminhos Backup.parm, HD e Pendrive
   const char* caminho_hd = "../HD/arquivo.txt";
   const char* caminho_pendrive = "../Pendrive/arquivo.txt";
   const std::string caminho_parm = "../Backup.parm";
 
+  // Decisão de fazer backup
+  bool fazer_backup = true;
 
   // Garantir que não há arquivo em Pendrive
   std::remove(caminho_pendrive);
@@ -56,8 +60,10 @@ TEST_CASE("Teste 2 - Backup.parm existe, quer fazer backup e arquivo somente no 
   std::ofstream arquivo_parm(caminho_parm);
   arquivo_parm << "arquivo.txt";
   arquivo_parm.close();
-  
-  Backup::Resultado acao = backup.FazerBackup(caminho_parm, caminho_hd, caminho_pendrive);
+
+  Backup::Resultado acao = backup.FazerBackup(caminho_parm,
+                                              caminho_hd,
+                                              caminho_pendrive);
 
   REQUIRE(acao == backup.Resultado::SALVAR);
 }

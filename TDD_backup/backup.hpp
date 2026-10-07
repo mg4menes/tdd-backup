@@ -17,7 +17,7 @@ class Backup {
     IMPOSSIVEL
   };
 
-  Resultado FazerBackup(const std::string caminho, 
+  Resultado FazerBackup(const std::string caminho,
                         const std::string& caminho_hd,
                         const std::string& caminho_pendrive);
 };

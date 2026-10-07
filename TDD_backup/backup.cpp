@@ -5,18 +5,19 @@
 #include <cassert>
 
 /**
- * @brief Verifica se poder realizar o backup do arquivo.
- * A função carrega o arquivo com base no caminho dado
- * Caso não possa ser aberto, retorna IMPOSSIVEL.
- * Caso contrário, retorna SALVAR.
+ * @brief Verifica se poder realizar o backup do arquivo e realiza o backup.
+ * A função primeiro verifica se Backup.parm existe
+ * Caso não possa ser exista, retorna IMPOSSIVEL.
+ * Caso contrário, verifica qual o caminho do backup
  * @param caminho_backup_parm Caminho do arquivo que será verificado.
+ * @param caminho_hd Caminho do arquivo do HD
+ * @param caminho_pendrive Caminho do arquivo do Pendrive.
  * @pre caminho_backup_parm deve conter algum conteúdo.
- * @return Algum valor do Enum Resultado (IMPOSSIVEL ou SALVAR).
+ * @return Algum valor do Enum Resultado (IMPOSSIVEL, SALVAR ou NADA).
  */
 Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
                                       const std::string& caminho_hd,
                                       const std::string& caminho_pendrive) {
-
   assert(!caminho_backup_parm.empty());  // Assertiva de entrada (pre)
 
   std::ifstream arquivo_parm(caminho_backup_parm.c_str());
@@ -28,7 +29,8 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
     return IMPOSSIVEL;
   }
 
-  if (input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {  // Backup do HD para Pendrive
+  // Backup do HD para Pendrive
+  if (input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {
     std::ofstream output_arquivo_pendrive(caminho_pendrive.c_str());
     output_arquivo_pendrive << input_arquivo_hd.rdbuf();
     return SALVAR;

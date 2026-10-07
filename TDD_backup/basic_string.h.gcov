@@ -236,8 +236,8 @@
         -:  235:
         -:  236:      _GLIBCXX20_CONSTEXPR
         -:  237:      pointer
-     2937:  238:      _M_data() const
-     2937:  239:      { return _M_dataplus._M_p; }
+     3193:  238:      _M_data() const
+     3193:  239:      { return _M_dataplus._M_p; }
         -:  240:
         -:  241:      _GLIBCXX20_CONSTEXPR
         -:  242:      pointer
@@ -1329,8 +1329,8 @@
         -: 1328:       */
         -: 1329:      _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
         -: 1330:      bool
-        -: 1331:      empty() const _GLIBCXX_NOEXCEPT
-        -: 1332:      { return _M_string_length == 0; }
+       81: 1331:      empty() const _GLIBCXX_NOEXCEPT
+       81: 1332:      { return _M_string_length == 0; }
         -: 1333:
         -: 1334:      // Element access:
         -: 1335:      /**
@@ -2871,8 +2871,8 @@
         -: 2870:      */
         -: 2871:      _GLIBCXX_NODISCARD _GLIBCXX20_CONSTEXPR
         -: 2872:      const _CharT*
-        2: 2873:      c_str() const _GLIBCXX_NOEXCEPT
-        2: 2874:      { return _M_data(); }
+        8: 2873:      c_str() const _GLIBCXX_NOEXCEPT
+        8: 2874:      { return _M_data(); }
         -: 2875:
         -: 2876:      /**
         -: 2877:       *  @brief  Return const pointer to contents.
