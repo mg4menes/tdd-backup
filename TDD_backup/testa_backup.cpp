@@ -259,3 +259,30 @@ TEST_CASE("Teste 8 - Backup.parm existe, sem backup e ambos atualizados") {
 
   REQUIRE(acao == backup.Resultado::NADA);
 }
+
+TEST_CASE("Teste 9 - Backup.parm existe, sem backup e HD desatualizado") {
+  Backup backup = CriarBackup();
+  // Caminhos Backup.parm, HD e Pendrive
+  const char* caminho_hd = "../HD/arquivo.txt";
+  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
+  const std::string caminho_parm = "../Backup.parm";
+
+  bool fazer_backup = false;
+
+  // Garantir que há arquivo com conteúdo em Pendrive
+  EscreverNoArquivo(caminho_pendrive, "conteudo final");
+  // Garantir que há arquivo com conteúdo em HD
+  EscreverNoArquivo(caminho_hd, "conteudo desatualizado");
+  CriarBackupParm(caminho_parm);
+
+  // Garantir que o Pendrive está a mais tempo sem alterar
+  ModificarDataArquivo(caminho_pendrive, 86400);
+  ModificarDataArquivo(caminho_hd, 0);
+
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminho_parm,
+                                              caminho_hd,
+                                              caminho_pendrive);
+
+  REQUIRE(acao == backup.Resultado::RESTAURAR);
+}
