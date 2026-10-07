@@ -13,14 +13,16 @@
  * @pre caminho_backup_parm deve conter algum conteúdo.
  * @return Algum valor do Enum Resultado (IMPOSSIVEL ou SALVAR).
  */
-Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm) {
+Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
+                                      const std::string& caminho_hd,
+                                      const std::string& caminho_pendrive) {
+
   assert(!caminho_backup_parm.empty());  // Assertiva de entrada (pre)
 
-  std::ifstream arquivo(caminho_backup_parm.c_str());
-
-  if (!arquivo.good()) {
+  std::ifstream arquivo_parm(caminho_backup_parm.c_str());
+  if (!arquivo_parm.good()) {
     return IMPOSSIVEL;
   }
 
-  return SALVAR;
+  return NADA;
 }
