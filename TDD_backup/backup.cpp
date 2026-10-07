@@ -53,6 +53,10 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
     return ERRO;
   }
 
+  if (!input_arquivo_hd.good() && input_arquivo_pendrive.good()) {
+    return NADA;
+  }
+
   return retorno_avaliacao;
 }
 
