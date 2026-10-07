@@ -16,6 +16,12 @@
 // O conteúdo que está sendo espelhado entre o HD e o
 // pendrive é um arquivo.txt
 
+struct CaminhosTeste {
+  const std::string hd = "../HD/arquivo.txt";
+  const std::string pendrive = "../Pendrive/arquivo.txt";
+  const std::string parm = "../Backup.parm";
+};
+
 /**
  * @brief Cria um objeto do tipo Backup
  * @return Retorna o objeto do tipo Backup
@@ -65,224 +71,163 @@ void EscreverNoArquivo(const std::string caminho, const std::string conteudo) {
 
 TEST_CASE("Teste 1 - Backup.parm não existe") {
   Backup backup = CriarBackup();
-  // Caminhos Backup.parm, HD e Pendrive
-  const char* caminho_hd = "../HD/arquivo.txt";
-  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
-  const std::string caminho_parm = "../Backup.parm";
+  CaminhosTeste caminhos;
 
   bool fazer_backup = true;
-  ApagarArquivo(caminho_parm);
+  ApagarArquivo(caminhos.parm);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
-                                              caminho_parm,
-                                              caminho_hd,
-                                              caminho_pendrive);
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
 
   REQUIRE(acao == backup.Resultado::IMPOSSIVEL);
 }
 
 TEST_CASE("Teste 2 - Backup.parm existe, backup e arquivo só no HD") {
   Backup backup = CriarBackup();
-  // Caminhos Backup.parm, HD e Pendrive
-  const char* caminho_hd = "../HD/arquivo.txt";
-  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
-  const std::string caminho_parm = "../Backup.parm";
+  CaminhosTeste caminhos;
 
   bool fazer_backup = true;
-  ApagarArquivo(caminho_pendrive);
-
-  // Garantir que há arquivo com conteúdo em HD
-  EscreverNoArquivo(caminho_hd, "conteudo final");
-  CriarBackupParm(caminho_parm);
+  ApagarArquivo(caminhos.pendrive);
+  EscreverNoArquivo(caminhos.hd, "conteudo final");
+  CriarBackupParm(caminhos.parm);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
-                                              caminho_parm,
-                                              caminho_hd,
-                                              caminho_pendrive);
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
 
   REQUIRE(acao == backup.Resultado::SALVAR);
 }
 
 TEST_CASE("Teste 3 - Backup.parm existe, backup e Pendrive desatualizado") {
   Backup backup = CriarBackup();
-  // Caminhos Backup.parm, HD e Pendrive
-  const char* caminho_hd = "../HD/arquivo.txt";
-  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
-  const std::string caminho_parm = "../Backup.parm";
+  CaminhosTeste caminhos;
 
   bool fazer_backup = true;
-
-  // Garantir que há arquivo com conteúdo em Pendrive
-  EscreverNoArquivo(caminho_pendrive, "conteudo desatualizado");
-  // Garantir que há arquivo com conteúdo em HD
-  EscreverNoArquivo(caminho_hd, "conteudo final");
-  CriarBackupParm(caminho_parm);
-
-  // Garantir que o Pendrive está a mais tempo sem alterar
-  ModificarDataArquivo(caminho_pendrive, 0);
-  ModificarDataArquivo(caminho_hd, 86400);
+  EscreverNoArquivo(caminhos.pendrive, "conteudo desatualizado");
+  EscreverNoArquivo(caminhos.hd, "conteudo final");
+  CriarBackupParm(caminhos.parm);
+  ModificarDataArquivo(caminhos.pendrive, 0);
+  ModificarDataArquivo(caminhos.hd, 86400);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
-                                              caminho_parm,
-                                              caminho_hd,
-                                              caminho_pendrive);
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
 
   REQUIRE(acao == backup.Resultado::SALVAR);
 }
 
 TEST_CASE("Teste 4 - Backup.parm existe, backup e ambos atualizados") {
   Backup backup = CriarBackup();
-  // Caminhos Backup.parm, HD e Pendrive
-  const char* caminho_hd = "../HD/arquivo.txt";
-  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
-  const std::string caminho_parm = "../Backup.parm";
+  CaminhosTeste caminhos;
 
   bool fazer_backup = true;
-
-  // Garantir que há arquivo com conteúdo em Pendrive
-  EscreverNoArquivo(caminho_pendrive, "conteudo final");
-  // Garantir que há arquivo com conteúdo em HD
-  EscreverNoArquivo(caminho_hd, "conteudo final");
-  CriarBackupParm(caminho_parm);
-
-  // Garantir que ambos estão igualmente atualizados
-  ModificarDataArquivo(caminho_pendrive, 0);
-  ModificarDataArquivo(caminho_hd, 0);
+  EscreverNoArquivo(caminhos.pendrive, "conteudo final");
+  EscreverNoArquivo(caminhos.hd, "conteudo final");
+  CriarBackupParm(caminhos.parm);
+  ModificarDataArquivo(caminhos.pendrive, 0);
+  ModificarDataArquivo(caminhos.hd, 0);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
-                                              caminho_parm,
-                                              caminho_hd,
-                                              caminho_pendrive);
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
 
   REQUIRE(acao == backup.Resultado::NADA);
 }
 
 TEST_CASE("Teste 5 - Backup.parm existe, backup e HD desatualizado") {
   Backup backup = CriarBackup();
-  // Caminhos Backup.parm, HD e Pendrive
-  const char* caminho_hd = "../HD/arquivo.txt";
-  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
-  const std::string caminho_parm = "../Backup.parm";
+  CaminhosTeste caminhos;
 
   bool fazer_backup = true;
-
-  // Garantir que há arquivo com conteúdo em Pendrive
-  EscreverNoArquivo(caminho_pendrive, "conteudo final");
-  // Garantir que há arquivo com conteúdo em HD
-  EscreverNoArquivo(caminho_hd, "conteudo desatualizado");
-  CriarBackupParm(caminho_parm);
-
-  // Garantir que ambos estão igualmente atualizados
-  ModificarDataArquivo(caminho_pendrive, 86400);
-  ModificarDataArquivo(caminho_hd, 0);
+  EscreverNoArquivo(caminhos.pendrive, "conteudo final");
+  EscreverNoArquivo(caminhos.hd, "conteudo desatualizado");
+  CriarBackupParm(caminhos.parm);
+  ModificarDataArquivo(caminhos.pendrive, 86400);
+  ModificarDataArquivo(caminhos.hd, 0);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
-                                              caminho_parm,
-                                              caminho_hd,
-                                              caminho_pendrive);
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
 
   REQUIRE(acao == backup.Resultado::ERRO);
 }
 
 TEST_CASE("Teste 6 - Backup.parm existe, sem backup e arquivo só no HD") {
   Backup backup = CriarBackup();
-  // Caminhos Backup.parm, HD e Pendrive
-  const char* caminho_hd = "../HD/arquivo.txt";
-  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
-  const std::string caminho_parm = "../Backup.parm";
+  CaminhosTeste caminhos;
 
   bool fazer_backup = false;
-  ApagarArquivo(caminho_pendrive);
-
-  // Garantir que há arquivo com conteúdo em HD
-  EscreverNoArquivo(caminho_hd, "conteudo final");
-  CriarBackupParm(caminho_parm);
+  ApagarArquivo(caminhos.pendrive);
+  EscreverNoArquivo(caminhos.hd, "conteudo final");
+  CriarBackupParm(caminhos.parm);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
-                                              caminho_parm,
-                                              caminho_hd,
-                                              caminho_pendrive);
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
 
   REQUIRE(acao == backup.Resultado::ERRO);
 }
 
 TEST_CASE("Teste 7 - Backup.parm existe, sem backup e Pendrive desatualizado") {
   Backup backup = CriarBackup();
-  // Caminhos Backup.parm, HD e Pendrive
-  const char* caminho_hd = "../HD/arquivo.txt";
-  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
-  const std::string caminho_parm = "../Backup.parm";
+  CaminhosTeste caminhos;
 
   bool fazer_backup = false;
-
-  // Garantir que há arquivo com conteúdo em Pendrive
-  EscreverNoArquivo(caminho_pendrive, "conteudo desatualizado");
-  // Garantir que há arquivo com conteúdo em HD
-  EscreverNoArquivo(caminho_hd, "conteudo final");
-  CriarBackupParm(caminho_parm);
-
-  // Garantir que o Pendrive está a mais tempo sem alterar
-  ModificarDataArquivo(caminho_pendrive, 0);
-  ModificarDataArquivo(caminho_hd, 86400);
+  EscreverNoArquivo(caminhos.pendrive, "conteudo desatualizado");
+  EscreverNoArquivo(caminhos.hd, "conteudo final");
+  CriarBackupParm(caminhos.parm);
+  ModificarDataArquivo(caminhos.pendrive, 0);
+  ModificarDataArquivo(caminhos.hd, 86400);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
-                                              caminho_parm,
-                                              caminho_hd,
-                                              caminho_pendrive);
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
 
   REQUIRE(acao == backup.Resultado::ERRO);
 }
 
 TEST_CASE("Teste 8 - Backup.parm existe, sem backup e ambos atualizados") {
   Backup backup = CriarBackup();
-  // Caminhos Backup.parm, HD e Pendrive
-  const char* caminho_hd = "../HD/arquivo.txt";
-  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
-  const std::string caminho_parm = "../Backup.parm";
+  CaminhosTeste caminhos;
 
   bool fazer_backup = false;
-
-  // Garantir que há arquivo com conteúdo em Pendrive
-  EscreverNoArquivo(caminho_pendrive, "conteudo final");
-  // Garantir que há arquivo com conteúdo em HD
-  EscreverNoArquivo(caminho_hd, "conteudo final");
-  CriarBackupParm(caminho_parm);
-
-  // Garantir que o Pendrive está a mais tempo sem alterar
-  ModificarDataArquivo(caminho_pendrive, 0);
-  ModificarDataArquivo(caminho_hd, 0);
+  EscreverNoArquivo(caminhos.pendrive, "conteudo final");
+  EscreverNoArquivo(caminhos.hd, "conteudo final");
+  CriarBackupParm(caminhos.parm);
+  ModificarDataArquivo(caminhos.pendrive, 0);
+  ModificarDataArquivo(caminhos.hd, 0);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
-                                              caminho_parm,
-                                              caminho_hd,
-                                              caminho_pendrive);
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
 
   REQUIRE(acao == backup.Resultado::NADA);
 }
 
 TEST_CASE("Teste 9 - Backup.parm existe, sem backup e HD desatualizado") {
   Backup backup = CriarBackup();
-  // Caminhos Backup.parm, HD e Pendrive
-  const char* caminho_hd = "../HD/arquivo.txt";
-  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
-  const std::string caminho_parm = "../Backup.parm";
+  CaminhosTeste caminhos;
 
   bool fazer_backup = false;
-
-  // Garantir que há arquivo com conteúdo em Pendrive
-  EscreverNoArquivo(caminho_pendrive, "conteudo final");
-  // Garantir que há arquivo com conteúdo em HD
-  EscreverNoArquivo(caminho_hd, "conteudo desatualizado");
-  CriarBackupParm(caminho_parm);
-
-  // Garantir que o Pendrive está a mais tempo sem alterar
-  ModificarDataArquivo(caminho_pendrive, 86400);
-  ModificarDataArquivo(caminho_hd, 0);
+  EscreverNoArquivo(caminhos.pendrive, "conteudo final");
+  EscreverNoArquivo(caminhos.hd, "conteudo desatualizado");
+  CriarBackupParm(caminhos.parm);
+  ModificarDataArquivo(caminhos.pendrive, 86400);
+  ModificarDataArquivo(caminhos.hd, 0);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
-                                              caminho_parm,
-                                              caminho_hd,
-                                              caminho_pendrive);
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
 
   REQUIRE(acao == backup.Resultado::RESTAURAR);
 }

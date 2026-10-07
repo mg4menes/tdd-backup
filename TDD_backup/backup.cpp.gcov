@@ -1,0 +1,141 @@
+        -:    0:Source:backup.cpp
+        -:    1:// Copyright 2026 Marcello da Silva Mangueira
+        -:    2:
+        -:    3:#include "backup.hpp"  // NOLINT(build/include_subdir)
+        -:    4:#include <sys/stat.h>
+        -:    5:#include <string>
+        -:    6:#include <cassert>
+        -:    7:
+        -:    8:/**
+        -:    9: * @brief Verifica se pode realizar o backup do arquivo e realiza o backup.
+        -:   10: * A função primeiro verifica se Backup.parm existe
+        -:   11: * Caso não possa ser exista, retorna IMPOSSIVEL.
+        -:   12: * Caso contrário, verifica qual o caminho do backup
+        -:   13: * @param caminho_backup_parm Caminho do arquivo que será verificado.
+        -:   14: * @param caminho_hd Caminho do arquivo do HD
+        -:   15: * @param caminho_pendrive Caminho do arquivo do Pendrive.
+        -:   16: * @pre caminho_backup_parm deve conter algum conteúdo.
+        -:   17: * @return Algum valor do Enum Resultado (IMPOSSIVEL, SALVAR, NADA ou ERRO).
+        -:   18: */
+        9:   19:Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
+        -:   20:                                      const std::string caminho_backup_parm,
+        -:   21:                                      const std::string& caminho_hd,
+        -:   22:                                      const std::string& caminho_pendrive) {
+       9*:   23:  assert(!caminho_backup_parm.empty());  // Assertiva de entrada (pre)
+        -:   24:
+        9:   25:  std::ifstream arquivo_parm(caminho_backup_parm.c_str());
+        9:   26:  std::ifstream input_arquivo_hd(caminho_hd.c_str());
+        9:   27:  std::ifstream input_arquivo_pendrive(caminho_pendrive.c_str());
+        -:   28:
+        9:   29:  if (!arquivo_parm.good()) {  // Verifica se backup_parm existe
+        1:   30:    return IMPOSSIVEL;
+        -:   31:  }
+        -:   32:
+        -:   33:  // Resgata os tempos do Pendrive e HD e compara
+        8:   34:  Resultado retorno_avaliacao = AvaliaData(backup_solicitado,
+        -:   35:                                           caminho_hd,
+        -:   36:                                           caminho_pendrive);
+        8:   37:  if (retorno_avaliacao == NADA && !backup_solicitado) {
+        1:   38:    return NADA;
+        -:   39:  }
+        -:   40:
+        7:   41:  if (retorno_avaliacao == RESTAURAR) {
+        1:   42:    return RESTAURAR;
+        -:   43:  }
+        -:   44:
+        6:   45:  if (!backup_solicitado) {
+        2:   46:    return ERRO;
+        -:   47:  }
+        -:   48:
+        -:   49:  // Backup do HD para Pendrive
+        4:   50:  if (input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {
+        1:   51:    CopiarDado(caminho_hd, caminho_pendrive);
+        1:   52:    return SALVAR;
+        -:   53:  }
+        -:   54:
+        3:   55:  return retorno_avaliacao;
+        9:   56:}
+        -:   57:
+        -:   58:/**
+        -:   59: * @brief Avalia o estado atual das datas dos arquivos.
+        -:   60: * Pega os caminhos do HD e Pendrive e copia os dados necessário.
+        -:   61: * @param caminho_hd Caminho do arquivo do HD
+        -:   62: * @param caminho_pendrive Caminho do arquivo do Pendrive.
+        -:   63: * @pre caminho_hd deve conter algum conteúdo.
+        -:   64: * @pre caminho_pendrive deve conter algum conteúdo.
+        -:   65: * @return Algum valor do Enum Resultado (SALVAR, NADA ou ERRO).
+        -:   66: */
+        8:   67:Backup::Resultado Backup::AvaliaData(bool backup_solicitado,
+        -:   68:                                  const std::string& caminho_hd,
+        -:   69:                                  const std::string& caminho_pendrive) {
+       8*:   70:  assert(!caminho_hd.empty());
+       8*:   71:  assert(!caminho_pendrive.empty());
+        -:   72:
+        8:   73:  int comparacao = CompararData(caminho_hd, caminho_pendrive);
+        8:   74:  if (comparacao == HD_ATUALIZADO) {
+        4:   75:    CopiarDado(caminho_hd, caminho_pendrive);
+        4:   76:    return SALVAR;
+        4:   77:  } else if (comparacao == HD_IGUAL) {
+        2:   78:    return NADA;
+        2:   79:  } else if (comparacao == HD_DESATUALIZADO) {
+        2:   80:    if (backup_solicitado) {
+        1:   81:      return ERRO;
+        -:   82:    } else {
+        1:   83:      CopiarDado(caminho_pendrive, caminho_hd);
+        1:   84:      return RESTAURAR;
+        -:   85:    }
+        -:   86:  }
+        -:   87:
+    #####:   88:  return ERRO;
+        -:   89:}
+        -:   90:
+        -:   91:/**
+        -:   92: * @brief Compara os horários dos 2 arquivos dos caminhhos
+        -:   93: * @param caminho_hd Caminho do arquivo do HD
+        -:   94: * @param caminho_pendrive Caminho do arquivo do Pendrive.
+        -:   95: * @pre caminho_hd deve conter algum conteúdo.
+        -:   96: * @pre caminho_pendrive deve conter algum conteúdo.
+        -:   97: * @return Algum valor do AvaliacaoDataHD (HD_DESATUALIZADO, HD_IGUAL, HD_ATUALIZADO).
+        -:   98: */
+        8:   99:Backup::ComparacaoDataHD Backup::CompararData(const std::string& caminho_hd,
+        -:  100:                                  const std::string& caminho_pendrive) {
+       8*:  101:  assert(!caminho_hd.empty());
+       8*:  102:  assert(!caminho_pendrive.empty());
+        -:  103:
+        -:  104:  struct stat tempo_pendrive;
+        8:  105:  stat(caminho_pendrive.c_str(), &tempo_pendrive);
+        -:  106:  struct stat tempo_hd;
+        8:  107:  stat(caminho_hd.c_str(), &tempo_hd);
+        -:  108:
+        8:  109:  if (tempo_pendrive.st_mtime < tempo_hd.st_mtime) {
+        4:  110:    return HD_ATUALIZADO;
+        4:  111:  } else if (tempo_pendrive.st_mtime == tempo_hd.st_mtime) {
+        2:  112:    return HD_IGUAL;
+        -:  113:  } else {
+        2:  114:    return HD_DESATUALIZADO;
+        -:  115:  }
+        -:  116:}
+        -:  117:
+        -:  118:/**
+        -:  119: * @brief Copia os dados do arquivo origem para o destino.
+        -:  120: * @param caminho_origem Caminho do arquivo a ser copiado.
+        -:  121: * @param caminho_destino Caminho do arquivo a ser colado.
+        -:  122: * @pre caminho_origem deve conter algum conteúdo.
+        -:  123: * @pre caminho_destino deve conter algum conteúdo.
+        -:  124: * @return Retorna true caso a cópia seja bem sucedida.
+        -:  125: */
+        6:  126:bool Backup::CopiarDado(const std::string& caminho_origem,
+        -:  127:                        const std::string& caminho_destino) {
+       6*:  128:  assert(!caminho_origem.empty());
+       6*:  129:  assert(!caminho_destino.empty());
+        -:  130:
+        6:  131:  std::ifstream arquivo_origem(caminho_origem.c_str());
+        6:  132:  std::ofstream arquivo_destino(caminho_destino.c_str());
+        -:  133:
+       6*:  134:  if (!arquivo_origem.good() || !arquivo_destino.good()) {
+    #####:  135:    return false;
+        -:  136:  }
+        -:  137:
+        6:  138:  arquivo_destino << arquivo_origem.rdbuf();
+        6:  139:  return arquivo_destino.good();
+        6:  140:}
