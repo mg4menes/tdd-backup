@@ -87,7 +87,7 @@ TEST_CASE("Teste 2 - Backup.parm existe, backup e arquivo só no HD") {
 
   // Garantir que há arquivo com conteúdo em HD
   std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo original do hd";
+  arquivo_hd << "conteudo final";
   arquivo_hd.close();
 
   CriarBackupParm(caminho_parm);
@@ -111,12 +111,12 @@ TEST_CASE("Teste 3 - Backup.parm existe, backup e Pendrive desatualizado") {
 
   // Garantir que há arquivo com conteúdo em Pendrive
   std::ofstream arquivo_pendrive(caminho_pendrive);
-  arquivo_pendrive << "conteudo original do pendrive";
+  arquivo_pendrive << "conteudo desatualizado";
   arquivo_pendrive.close();
 
   // Garantir que há arquivo com conteúdo em HD
   std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo original do hd";
+  arquivo_hd << "conteudo final";
   arquivo_hd.close();
 
   CriarBackupParm(caminho_parm);
@@ -144,12 +144,12 @@ TEST_CASE("Teste 4 - Backup.parm existe, backup e ambos atualizados") {
 
   // Garantir que há arquivo com conteúdo em Pendrive
   std::ofstream arquivo_pendrive(caminho_pendrive);
-  arquivo_pendrive << "conteudo original do pendrive";
+  arquivo_pendrive << "conteudo final";
   arquivo_pendrive.close();
 
   // Garantir que há arquivo com conteúdo em HD
   std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo original do hd";
+  arquivo_hd << "conteudo final";
   arquivo_hd.close();
 
   CriarBackupParm(caminho_parm);
@@ -177,12 +177,12 @@ TEST_CASE("Teste 5 - Backup.parm existe, backup e HD desatualizado") {
 
   // Garantir que há arquivo com conteúdo em Pendrive
   std::ofstream arquivo_pendrive(caminho_pendrive);
-  arquivo_pendrive << "conteudo original do pendrive";
+  arquivo_pendrive << "conteudo final";
   arquivo_pendrive.close();
 
   // Garantir que há arquivo com conteúdo em HD
   std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo original do hd";
+  arquivo_hd << "conteudo desatualizado";
   arquivo_hd.close();
 
   CriarBackupParm(caminho_parm);
@@ -211,7 +211,7 @@ TEST_CASE("Teste 6 - Backup.parm existe, sem backup e arquivo só no HD") {
 
   // Garantir que há arquivo com conteúdo em HD
   std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo original do hd";
+  arquivo_hd << "conteudo final";
   arquivo_hd.close();
 
   CriarBackupParm(caminho_parm);
@@ -235,12 +235,12 @@ TEST_CASE("Teste 7 - Backup.parm existe, sem backup e Pendrive desatualizado") {
 
   // Garantir que há arquivo com conteúdo em Pendrive
   std::ofstream arquivo_pendrive(caminho_pendrive);
-  arquivo_pendrive << "conteudo original do pendrive";
+  arquivo_pendrive << "conteudo desatualizado";
   arquivo_pendrive.close();
 
   // Garantir que há arquivo com conteúdo em HD
   std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo original do hd";
+  arquivo_hd << "conteudo final";
   arquivo_hd.close();
 
   CriarBackupParm(caminho_parm);
@@ -255,4 +255,37 @@ TEST_CASE("Teste 7 - Backup.parm existe, sem backup e Pendrive desatualizado") {
                                               caminho_pendrive);
 
   REQUIRE(acao == backup.Resultado::ERRO);
+}
+
+TEST_CASE("Teste 8 - Backup.parm existe, sem backup e ambos atualizados") {
+  Backup backup = CriarBackup();
+  // Caminhos Backup.parm, HD e Pendrive
+  const char* caminho_hd = "../HD/arquivo.txt";
+  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
+  const std::string caminho_parm = "../Backup.parm";
+
+  bool fazer_backup = false;
+
+  // Garantir que há arquivo com conteúdo em Pendrive
+  std::ofstream arquivo_pendrive(caminho_pendrive);
+  arquivo_pendrive << "conteudo final";
+  arquivo_pendrive.close();
+
+  // Garantir que há arquivo com conteúdo em HD
+  std::ofstream arquivo_hd(caminho_hd);
+  arquivo_hd << "conteudo original do hd";
+  arquivo_hd.close();
+
+  CriarBackupParm(caminho_parm);
+
+  // Garantir que o Pendrive está a mais tempo sem alterar
+  ModificarDataArquivo(caminho_pendrive, 0);
+  ModificarDataArquivo(caminho_hd, 0);
+
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminho_parm,
+                                              caminho_hd,
+                                              caminho_pendrive);
+
+  REQUIRE(acao == backup.Resultado::NADA);
 }

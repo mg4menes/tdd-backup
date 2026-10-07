@@ -68,7 +68,7 @@ Backup::Resultado Backup::AvaliaData(const std::string& caminho_hd,
     return ERRO;
   }
 
-  return NADA;
+  return ERRO;
 }
 
 /**
