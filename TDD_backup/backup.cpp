@@ -30,6 +30,12 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
     return IMPOSSIVEL;
   }
 
+  // Resgata os tempos do Pendrive e HD e compara
+  Resultado retorno_avaliacao = AvaliaData(caminho_hd, caminho_pendrive);
+  if (retorno_avaliacao == NADA && !backup_solicitado) {
+    return NADA;
+  }
+
   if (!backup_solicitado) {
     return ERRO;
   }
@@ -39,9 +45,8 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
     CopiarDado(caminho_hd, caminho_pendrive);
     return SALVAR;
   }
-
-  // Resgata os tempos do Pendrive e HD e compara
-  return AvaliaData(caminho_hd, caminho_pendrive);
+  
+  return retorno_avaliacao;
 }
 
 /**
