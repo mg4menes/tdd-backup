@@ -1,0 +1,12 @@
+Nome: Marcello da Silva Mangueira
+
+Sistema de backup para um diretório desenvolvido utilizando desenvolvimento orientado a testes (TDD).
+
+Para compilar o programa:
+- Digite "make all" no diretório TDD_backup.
+
+Para realizar os testes:
+- Digite "make test" no diretório TDD_backup.
+
+Foi utilizado o cpplint, gcov, cppcheck e valgrind no desenvolvimento do programa.
+Para o TDD, foi usado o catch.
