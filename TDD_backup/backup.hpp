@@ -1,7 +1,7 @@
 // Copyright 2026 Marcello da Silva Mangueira
 
-#ifndef TDD_BACKUP_HPP
-#define TDD_BACKUP_HPP
+#ifndef TDD_BACKUP_BACKUP_HPP_
+#define TDD_BACKUP_BACKUP_HPP_
 
 #include <string>
 #include <fstream>
@@ -20,4 +20,4 @@ class Backup {
   Resultado FazerBackup(const std::string caminho);
 };
 
-#endif  // TDD_BACKUP_HPP
+#endif  // TDD_BACKUP_BACKUP_HPP_

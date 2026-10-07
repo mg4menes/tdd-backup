@@ -1,0 +1,15 @@
+        -:    0:Source:backup.cpp
+        -:    1:// Copyright 2026 Marcello da Silva Mangueira
+        -:    2:
+        -:    3:#include "backup.hpp"  // NOLINT(build/include_subdir)
+        -:    4:#include <string>
+        -:    5:
+        1:    6:Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm) {
+        1:    7:  std::ifstream arquivo(caminho_backup_parm.c_str());
+        -:    8:
+        1:    9:  if (!arquivo.good()) {
+        1:   10:    return Resultado::IMPOSSIVEL;
+        -:   11:  }
+        -:   12:
+    #####:   13:  return SALVAR;
+        1:   14:}
