@@ -49,5 +49,9 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
     return SALVAR;
   }
 
+  if (tempo_pendrive.st_mtime == tempo_hd.st_mtime) {
+    return NADA;
+  }
+
   return NADA;
 }

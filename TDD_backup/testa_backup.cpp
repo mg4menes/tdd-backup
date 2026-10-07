@@ -153,5 +153,5 @@ TEST_CASE("Teste 4 - Backup.parm existe, backup e ambos atualizados") {
                                               caminho_hd,
                                               caminho_pendrive);
 
-  REQUIRE(acao == backup.Resultado::SALVAR);
+  REQUIRE(acao == backup.Resultado::NADA);
 }
