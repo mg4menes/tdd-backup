@@ -49,6 +49,10 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
     return NADA;
   }
 
+  else if (avaliacao == HD_DESATUALIZADO) {
+    return ERRO;
+  }
+
   return NADA;
 }
 
@@ -74,9 +78,11 @@ Backup::AvaliacaoDataHD Backup::CompararData(const std::string& caminho_hd,
     return HD_ATUALIZADO;
   }
 
-  if (tempo_pendrive.st_mtime == tempo_hd.st_mtime) {
+  else if (tempo_pendrive.st_mtime == tempo_hd.st_mtime) {
     return HD_IGUAL;
   }
 
-  return HD_IGUAL;
+  else {
+    return HD_DESATUALIZADO;
+  }
 }
