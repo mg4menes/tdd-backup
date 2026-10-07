@@ -49,8 +49,13 @@ TEST_CASE("Teste 2 - Backup.parm existe, quer fazer backup e arquivo somente no 
 
   // Garantir que há arquivo com conteúdo em HD
   std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo do arquivo";
+  arquivo_hd << "conteudo original do hd";
   arquivo_hd.close();
+
+  // Garantir que Backup.parm existe
+  std::ofstream arquivo_parm(caminho_parm);
+  arquivo_parm << "arquivo.txt";
+  arquivo_parm.close();
   
   Backup::Resultado acao = backup.FazerBackup(caminho_parm, caminho_hd, caminho_pendrive);
 

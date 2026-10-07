@@ -20,8 +20,18 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
   assert(!caminho_backup_parm.empty());  // Assertiva de entrada (pre)
 
   std::ifstream arquivo_parm(caminho_backup_parm.c_str());
-  if (!arquivo_parm.good()) {
+
+  std::ifstream input_arquivo_hd(caminho_hd.c_str());
+  std::ifstream input_arquivo_pendrive(caminho_pendrive.c_str());
+
+  if (!arquivo_parm.good()) {  // Verifica se backup_parm existe
     return IMPOSSIVEL;
+  }
+
+  if (input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {  // Backup do HD para Pendrive
+    std::ofstream output_arquivo_pendrive(caminho_pendrive.c_str());
+    output_arquivo_pendrive << input_arquivo_hd.rdbuf();
+    return SALVAR;
   }
 
   return NADA;
