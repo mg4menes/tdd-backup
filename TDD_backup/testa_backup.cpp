@@ -119,3 +119,39 @@ TEST_CASE("Teste 3 - Backup.parm existe, backup e Pendrive desatualizado") {
 
   REQUIRE(acao == backup.Resultado::SALVAR);
 }
+
+TEST_CASE("Teste 4 - Backup.parm existe, backup e ambos atualizados") {
+  Backup backup = CriarBackup();
+  // Caminhos Backup.parm, HD e Pendrive
+  const char* caminho_hd = "../HD/arquivo.txt";
+  const char* caminho_pendrive = "../Pendrive/arquivo.txt";
+  const std::string caminho_parm = "../Backup.parm";
+
+  // Decisão de fazer backup
+  bool fazer_backup = true;
+
+  // Garantir que há arquivo com conteúdo em Pendrive
+  std::ofstream arquivo_pendrive(caminho_pendrive);
+  arquivo_pendrive << "conteudo original do pendrive";
+  arquivo_pendrive.close();
+
+  // Garantir que há arquivo com conteúdo em HD
+  std::ofstream arquivo_hd(caminho_hd);
+  arquivo_hd << "conteudo original do hd";
+  arquivo_hd.close();
+
+  // Garantir que Backup.parm existe
+  std::ofstream arquivo_parm(caminho_parm);
+  arquivo_parm << "arquivo.txt";
+  arquivo_parm.close();
+
+  // Garantir que ambos estão igualmente atualizados
+  ModificarDataArquivo(caminho_pendrive, 0);
+  ModificarDataArquivo(caminho_hd, 0);
+
+  Backup::Resultado acao = backup.FazerBackup(caminho_parm,
+                                              caminho_hd,
+                                              caminho_pendrive);
+
+  REQUIRE(acao == backup.Resultado::SALVAR);
+}
