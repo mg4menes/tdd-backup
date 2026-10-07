@@ -31,9 +31,13 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
   }
 
   // Resgata os tempos do Pendrive e HD e compara
-  Resultado retorno_avaliacao = AvaliaData(caminho_hd, caminho_pendrive);
+  Resultado retorno_avaliacao = AvaliaData(backup_solicitado, caminho_hd, caminho_pendrive);
   if (retorno_avaliacao == NADA && !backup_solicitado) {
     return NADA;
+  }
+
+  if (retorno_avaliacao == RESTAURAR) {
+    return RESTAURAR;
   }
 
   if (!backup_solicitado) {
@@ -58,7 +62,8 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
  * @pre caminho_pendrive deve conter algum conteúdo.
  * @return Algum valor do Enum Resultado (SALVAR, NADA ou ERRO).
  */
-Backup::Resultado Backup::AvaliaData(const std::string& caminho_hd,
+Backup::Resultado Backup::AvaliaData(bool backup_solicitado,
+                                  const std::string& caminho_hd,
                                   const std::string& caminho_pendrive) {
   assert(!caminho_hd.empty());
   assert(!caminho_pendrive.empty());
@@ -70,7 +75,12 @@ Backup::Resultado Backup::AvaliaData(const std::string& caminho_hd,
   } else if (comparacao == HD_IGUAL) {
     return NADA;
   } else if (comparacao == HD_DESATUALIZADO) {
-    return ERRO;
+    if (backup_solicitado) {
+      return ERRO;
+    } else {
+      return RESTAURAR;
+    }
+    
   }
 
   return ERRO;
