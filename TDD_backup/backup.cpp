@@ -14,7 +14,7 @@
  * @param caminho_hd Caminho do arquivo do HD
  * @param caminho_pendrive Caminho do arquivo do Pendrive.
  * @pre caminho_backup_parm deve conter algum conteúdo.
- * @return Algum valor do Enum Resultado (IMPOSSIVEL, SALVAR ou NADA).
+ * @return Algum valor do Enum Resultado (IMPOSSIVEL, SALVAR, NADA ou ERRO).
  */
 Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
                                       const std::string caminho_backup_parm,
@@ -23,7 +23,6 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
   assert(!caminho_backup_parm.empty());  // Assertiva de entrada (pre)
 
   std::ifstream arquivo_parm(caminho_backup_parm.c_str());
-
   std::ifstream input_arquivo_hd(caminho_hd.c_str());
   std::ifstream input_arquivo_pendrive(caminho_pendrive.c_str());
 
@@ -42,6 +41,23 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
   }
 
   // Resgata os tempos do Pendrive e HD e compara
+  return AvaliaData(caminho_hd, caminho_pendrive);
+}
+
+/**
+ * @brief Avalia o estado atual das datas dos arquivos.
+ * Pega os caminhos do HD e Pendrive e copia os dados necessário.
+ * @param caminho_hd Caminho do arquivo do HD
+ * @param caminho_pendrive Caminho do arquivo do Pendrive.
+ * @pre caminho_hd deve conter algum conteúdo.
+ * @pre caminho_pendrive deve conter algum conteúdo.
+ * @return Algum valor do Enum Resultado (SALVAR, NADA ou ERRO).
+ */
+Backup::Resultado Backup::AvaliaData(const std::string& caminho_hd,
+                                  const std::string& caminho_pendrive) {
+  assert(!caminho_hd.empty());
+  assert(!caminho_pendrive.empty());
+
   int comparacao = CompararData(caminho_hd, caminho_pendrive);
   if (comparacao == HD_ATUALIZADO) {
     CopiarDado(caminho_hd, caminho_pendrive);

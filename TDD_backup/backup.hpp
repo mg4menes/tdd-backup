@@ -29,6 +29,8 @@ class Backup {
  private:
   bool CopiarDado(const std::string& origem,
                   const std::string& destino);
+  Resultado AvaliaData(const std::string& caminho_hd,
+                       const std::string& caminho_pendrive);
   ComparacaoDataHD CompararData(const std::string& caminho_hd,
                                const std::string& caminho_pendrive);
 };
