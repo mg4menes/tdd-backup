@@ -57,6 +57,12 @@ void ApagarArquivo(const std::string caminho) {
   std::remove(caminho.c_str());
 }
 
+void EscreverNoArquivo(const std::string caminho, const std::string conteudo) {
+  std::ofstream arquivo(caminho);
+  arquivo << conteudo;
+  arquivo.close();
+}
+
 TEST_CASE("Teste 1 - Backup.parm não existe") {
   Backup backup = CriarBackup();
   // Caminhos Backup.parm, HD e Pendrive
@@ -86,10 +92,7 @@ TEST_CASE("Teste 2 - Backup.parm existe, backup e arquivo só no HD") {
   ApagarArquivo(caminho_pendrive);
 
   // Garantir que há arquivo com conteúdo em HD
-  std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo final";
-  arquivo_hd.close();
-
+  EscreverNoArquivo(caminho_hd, "conteudo final");
   CriarBackupParm(caminho_parm);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
@@ -110,15 +113,9 @@ TEST_CASE("Teste 3 - Backup.parm existe, backup e Pendrive desatualizado") {
   bool fazer_backup = true;
 
   // Garantir que há arquivo com conteúdo em Pendrive
-  std::ofstream arquivo_pendrive(caminho_pendrive);
-  arquivo_pendrive << "conteudo desatualizado";
-  arquivo_pendrive.close();
-
+  EscreverNoArquivo(caminho_pendrive, "conteudo desatualizado");
   // Garantir que há arquivo com conteúdo em HD
-  std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo final";
-  arquivo_hd.close();
-
+  EscreverNoArquivo(caminho_hd, "conteudo final");
   CriarBackupParm(caminho_parm);
 
   // Garantir que o Pendrive está a mais tempo sem alterar
@@ -143,15 +140,9 @@ TEST_CASE("Teste 4 - Backup.parm existe, backup e ambos atualizados") {
   bool fazer_backup = true;
 
   // Garantir que há arquivo com conteúdo em Pendrive
-  std::ofstream arquivo_pendrive(caminho_pendrive);
-  arquivo_pendrive << "conteudo final";
-  arquivo_pendrive.close();
-
+  EscreverNoArquivo(caminho_pendrive, "conteudo final");
   // Garantir que há arquivo com conteúdo em HD
-  std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo final";
-  arquivo_hd.close();
-
+  EscreverNoArquivo(caminho_hd, "conteudo final");
   CriarBackupParm(caminho_parm);
 
   // Garantir que ambos estão igualmente atualizados
@@ -176,15 +167,9 @@ TEST_CASE("Teste 5 - Backup.parm existe, backup e HD desatualizado") {
   bool fazer_backup = true;
 
   // Garantir que há arquivo com conteúdo em Pendrive
-  std::ofstream arquivo_pendrive(caminho_pendrive);
-  arquivo_pendrive << "conteudo final";
-  arquivo_pendrive.close();
-
+  EscreverNoArquivo(caminho_pendrive, "conteudo final");
   // Garantir que há arquivo com conteúdo em HD
-  std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo desatualizado";
-  arquivo_hd.close();
-
+  EscreverNoArquivo(caminho_hd, "conteudo desatualizado");
   CriarBackupParm(caminho_parm);
 
   // Garantir que ambos estão igualmente atualizados
@@ -210,10 +195,7 @@ TEST_CASE("Teste 6 - Backup.parm existe, sem backup e arquivo só no HD") {
   ApagarArquivo(caminho_pendrive);
 
   // Garantir que há arquivo com conteúdo em HD
-  std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo final";
-  arquivo_hd.close();
-
+  EscreverNoArquivo(caminho_hd, "conteudo final");
   CriarBackupParm(caminho_parm);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
@@ -234,15 +216,9 @@ TEST_CASE("Teste 7 - Backup.parm existe, sem backup e Pendrive desatualizado") {
   bool fazer_backup = false;
 
   // Garantir que há arquivo com conteúdo em Pendrive
-  std::ofstream arquivo_pendrive(caminho_pendrive);
-  arquivo_pendrive << "conteudo desatualizado";
-  arquivo_pendrive.close();
-
+  EscreverNoArquivo(caminho_pendrive, "conteudo desatualizado");
   // Garantir que há arquivo com conteúdo em HD
-  std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo final";
-  arquivo_hd.close();
-
+  EscreverNoArquivo(caminho_hd, "conteudo final");
   CriarBackupParm(caminho_parm);
 
   // Garantir que o Pendrive está a mais tempo sem alterar
@@ -267,15 +243,9 @@ TEST_CASE("Teste 8 - Backup.parm existe, sem backup e ambos atualizados") {
   bool fazer_backup = false;
 
   // Garantir que há arquivo com conteúdo em Pendrive
-  std::ofstream arquivo_pendrive(caminho_pendrive);
-  arquivo_pendrive << "conteudo final";
-  arquivo_pendrive.close();
-
+  EscreverNoArquivo(caminho_pendrive, "conteudo final");
   // Garantir que há arquivo com conteúdo em HD
-  std::ofstream arquivo_hd(caminho_hd);
-  arquivo_hd << "conteudo original do hd";
-  arquivo_hd.close();
-
+  EscreverNoArquivo(caminho_hd, "conteudo final");
   CriarBackupParm(caminho_parm);
 
   // Garantir que o Pendrive está a mais tempo sem alterar

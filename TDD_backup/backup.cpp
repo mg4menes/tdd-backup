@@ -45,7 +45,7 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
     CopiarDado(caminho_hd, caminho_pendrive);
     return SALVAR;
   }
-  
+
   return retorno_avaliacao;
 }
 
