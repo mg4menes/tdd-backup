@@ -17,9 +17,17 @@ class Backup {
     IMPOSSIVEL
   };
 
+  enum AvaliacaoDataHD {
+    HD_DESATUALIZADO,
+    HD_IGUAL,
+    HD_ATUALIZADO
+  };
+
   Resultado FazerBackup(const std::string caminho,
                         const std::string& caminho_hd,
                         const std::string& caminho_pendrive);
+  AvaliacaoDataHD CompararData(const std::string& caminho_hd,
+                               const std::string& caminho_pendrive);
 };
 
 #endif  // TDD_BACKUP_BACKUP_HPP_

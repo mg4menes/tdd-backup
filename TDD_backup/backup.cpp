@@ -6,7 +6,7 @@
 #include <cassert>
 
 /**
- * @brief Verifica se poder realizar o backup do arquivo e realiza o backup.
+ * @brief Verifica se pode realizar o backup do arquivo e realiza o backup.
  * A função primeiro verifica se Backup.parm existe
  * Caso não possa ser exista, retorna IMPOSSIVEL.
  * Caso contrário, verifica qual o caminho do backup
@@ -38,20 +38,45 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
   }
 
   // Resgata os tempos do Pendrive e HD e compara
+  int avaliacao = CompararData(caminho_hd, caminho_pendrive);
+  if (avaliacao == HD_ATUALIZADO) {
+    std::ofstream output_arquivo_pendrive(caminho_pendrive.c_str());
+    output_arquivo_pendrive << input_arquivo_hd.rdbuf();
+    return SALVAR;
+  }
+
+  else if (avaliacao == HD_IGUAL) {
+    return NADA;
+  }
+
+  return NADA;
+}
+
+/**
+ * @brief Compara os horários dos 2 arquivos dos caminhhos
+ * @param caminho_hd Caminho do arquivo do HD
+ * @param caminho_pendrive Caminho do arquivo do Pendrive.
+ * @pre caminho_hd deve conter algum conteúdo.
+ * @pre caminho_pendrive deve conter algum conteúdo.
+ * @return Algum valor do Enum AvaliacaoDataHD (HD_DESATUALIZADO, HD_IGUAL, HD_ATUALIZADO).
+ */
+Backup::AvaliacaoDataHD Backup::CompararData(const std::string& caminho_hd,
+                                             const std::string& caminho_pendrive) {
+  assert(!caminho_hd.empty());
+  assert(!caminho_pendrive.empty());
+
   struct stat tempo_pendrive;
   stat(caminho_pendrive.c_str(), &tempo_pendrive);
   struct stat tempo_hd;
   stat(caminho_hd.c_str(), &tempo_hd);
 
   if (tempo_pendrive.st_mtime < tempo_hd.st_mtime) {
-    std::ofstream output_arquivo_pendrive(caminho_pendrive.c_str());
-    output_arquivo_pendrive << input_arquivo_hd.rdbuf();
-    return SALVAR;
+    return HD_ATUALIZADO;
   }
 
   if (tempo_pendrive.st_mtime == tempo_hd.st_mtime) {
-    return NADA;
+    return HD_IGUAL;
   }
 
-  return NADA;
+  return HD_IGUAL;
 }
