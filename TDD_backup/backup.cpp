@@ -46,6 +46,9 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
     return ERRO;
   }
 
+  if (!input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {
+    return ERRO;
+  }
   // Backup do HD para Pendrive
   if (input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {
     CopiarDado(caminho_hd, caminho_pendrive);

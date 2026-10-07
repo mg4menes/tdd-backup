@@ -237,8 +237,9 @@ TEST_CASE("Teste 10 - Backup.parm existe, backup e sem nenhum arquivo") {
   CaminhosTeste caminhos;
 
   bool fazer_backup = true;
-  ApagarArquivo(caminhos.pendrive);
+  
   ApagarArquivo(caminhos.hd);
+  ApagarArquivo(caminhos.pendrive);
   CriarBackupParm(caminhos.parm);
 
   Backup::Resultado acao = backup.FazerBackup(fazer_backup,
@@ -246,5 +247,6 @@ TEST_CASE("Teste 10 - Backup.parm existe, backup e sem nenhum arquivo") {
                                               caminhos.hd,
                                               caminhos.pendrive);
 
+  ApagarArquivo(caminhos.pendrive);
   REQUIRE(acao == backup.Resultado::ERRO);
 }
