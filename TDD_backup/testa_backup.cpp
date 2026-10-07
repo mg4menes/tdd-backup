@@ -237,7 +237,7 @@ TEST_CASE("Teste 10 - Backup.parm existe, backup e sem nenhum arquivo") {
   CaminhosTeste caminhos;
 
   bool fazer_backup = true;
-  
+
   ApagarArquivo(caminhos.hd);
   ApagarArquivo(caminhos.pendrive);
   CriarBackupParm(caminhos.parm);

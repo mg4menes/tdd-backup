@@ -30,29 +30,27 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
     return IMPOSSIVEL;
   }
 
-  // Resgata os tempos do Pendrive e HD e compara
   Resultado retorno_avaliacao = AvaliaData(backup_solicitado,
                                            caminho_hd,
                                            caminho_pendrive);
-  if (retorno_avaliacao == NADA && !backup_solicitado) {
-    return NADA;
-  }
 
-  if (retorno_avaliacao == RESTAURAR) {
-    return RESTAURAR;
+  if (!input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {
+    return ERRO;
+  }
+  if (retorno_avaliacao == RESTAURAR || retorno_avaliacao == NADA) {
+    return retorno_avaliacao;
   }
 
   if (!backup_solicitado) {
     return ERRO;
   }
 
-  if (!input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {
-    return ERRO;
-  }
-  // Backup do HD para Pendrive
   if (input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {
-    CopiarDado(caminho_hd, caminho_pendrive);
-    return SALVAR;
+    if (CopiarDado(caminho_hd, caminho_pendrive)) {
+      return SALVAR;
+    }
+
+    return ERRO;
   }
 
   return retorno_avaliacao;
