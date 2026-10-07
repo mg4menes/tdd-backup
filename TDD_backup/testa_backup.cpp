@@ -16,6 +16,9 @@
 // O conteúdo que está sendo espelhado entre o HD e o
 // pendrive é um arquivo.txt
 
+/**
+ * @brief Contém todos os caminhos dos arquivos do programa
+ */
 struct CaminhosTeste {
   const std::string hd = "../HD/arquivo.txt";
   const std::string pendrive = "../Pendrive/arquivo.txt";
