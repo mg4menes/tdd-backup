@@ -16,17 +16,19 @@ class Backup {
     NADA,
     IMPOSSIVEL
   };
-
-  enum AvaliacaoDataHD {
+  enum ComparacaoDataHD {
     HD_DESATUALIZADO,
     HD_IGUAL,
     HD_ATUALIZADO
   };
-
   Resultado FazerBackup(const std::string caminho,
                         const std::string& caminho_hd,
                         const std::string& caminho_pendrive);
-  AvaliacaoDataHD CompararData(const std::string& caminho_hd,
+
+ private:
+  bool CopiarDado(const std::string& origem,
+                  const std::string& destino);
+  ComparacaoDataHD CompararData(const std::string& caminho_hd,
                                const std::string& caminho_pendrive);
 };
 

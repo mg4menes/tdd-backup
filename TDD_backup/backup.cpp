@@ -32,24 +32,18 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
 
   // Backup do HD para Pendrive
   if (input_arquivo_hd.good() && !input_arquivo_pendrive.good()) {
-    std::ofstream output_arquivo_pendrive(caminho_pendrive.c_str());
-    output_arquivo_pendrive << input_arquivo_hd.rdbuf();
+    CopiarDado(caminho_hd, caminho_pendrive);
     return SALVAR;
   }
 
   // Resgata os tempos do Pendrive e HD e compara
-  int avaliacao = CompararData(caminho_hd, caminho_pendrive);
-  if (avaliacao == HD_ATUALIZADO) {
-    std::ofstream output_arquivo_pendrive(caminho_pendrive.c_str());
-    output_arquivo_pendrive << input_arquivo_hd.rdbuf();
+  int comparacao = CompararData(caminho_hd, caminho_pendrive);
+  if (comparacao == HD_ATUALIZADO) {
+    CopiarDado(caminho_hd, caminho_pendrive);
     return SALVAR;
-  }
-
-  else if (avaliacao == HD_IGUAL) {
+  } else if (comparacao == HD_IGUAL) {
     return NADA;
-  }
-
-  else if (avaliacao == HD_DESATUALIZADO) {
+  } else if (comparacao == HD_DESATUALIZADO) {
     return ERRO;
   }
 
@@ -62,10 +56,10 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
  * @param caminho_pendrive Caminho do arquivo do Pendrive.
  * @pre caminho_hd deve conter algum conteúdo.
  * @pre caminho_pendrive deve conter algum conteúdo.
- * @return Algum valor do Enum AvaliacaoDataHD (HD_DESATUALIZADO, HD_IGUAL, HD_ATUALIZADO).
+ * @return Algum valor do AvaliacaoDataHD (HD_DESATUALIZADO, HD_IGUAL, HD_ATUALIZADO).
  */
-Backup::AvaliacaoDataHD Backup::CompararData(const std::string& caminho_hd,
-                                             const std::string& caminho_pendrive) {
+Backup::ComparacaoDataHD Backup::CompararData(const std::string& caminho_hd,
+                                  const std::string& caminho_pendrive) {
   assert(!caminho_hd.empty());
   assert(!caminho_pendrive.empty());
 
@@ -76,13 +70,33 @@ Backup::AvaliacaoDataHD Backup::CompararData(const std::string& caminho_hd,
 
   if (tempo_pendrive.st_mtime < tempo_hd.st_mtime) {
     return HD_ATUALIZADO;
-  }
-
-  else if (tempo_pendrive.st_mtime == tempo_hd.st_mtime) {
+  } else if (tempo_pendrive.st_mtime == tempo_hd.st_mtime) {
     return HD_IGUAL;
-  }
-
-  else {
+  } else {
     return HD_DESATUALIZADO;
   }
+}
+
+/**
+ * @brief Copia os dados do arquivo origem para o destino.
+ * @param caminho_origem Caminho do arquivo a ser copiado.
+ * @param caminho_destino Caminho do arquivo a ser colado.
+ * @pre caminho_origem deve conter algum conteúdo.
+ * @pre caminho_destino deve conter algum conteúdo.
+ * @return Retorna true caso a cópia seja bem sucedida.
+ */
+bool Backup::CopiarDado(const std::string& caminho_origem,
+                        const std::string& caminho_destino) {
+  assert(!caminho_origem.empty());
+  assert(!caminho_destino.empty());
+
+  std::ifstream arquivo_origem(caminho_origem.c_str());
+  std::ofstream arquivo_destino(caminho_destino.c_str());
+
+  if (!arquivo_origem.good() || !arquivo_destino.good()) {
+    return false;
+  }
+
+  arquivo_destino << arquivo_origem.rdbuf();
+  return arquivo_destino.good();
 }
