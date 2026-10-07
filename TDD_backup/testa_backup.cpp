@@ -13,6 +13,7 @@ TEST_CASE("Teste 1 - Backup.parm não existe"){
   Backup backup;
 
   const std::string caminho = "Backup.parm";
+  std::remove(caminho.c_str());
 
   REQUIRE(backup.FazerBackup(caminho) == backup.Resultado::IMPOSSIVEL);
 }
