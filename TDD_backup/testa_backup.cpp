@@ -231,3 +231,20 @@ TEST_CASE("Teste 9 - Backup.parm existe, sem backup e HD desatualizado") {
 
   REQUIRE(acao == backup.Resultado::RESTAURAR);
 }
+
+TEST_CASE("Teste 10 - Backup.parm existe, backup e sem nenhum arquivo") {
+  Backup backup = CriarBackup();
+  CaminhosTeste caminhos;
+
+  bool fazer_backup = true;
+  ApagarArquivo(caminhos.pendrive);
+  ApagarArquivo(caminhos.hd);
+  CriarBackupParm(caminhos.parm);
+
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminhos.parm,
+                                              caminhos.hd,
+                                              caminhos.pendrive);
+
+  REQUIRE(acao == backup.Resultado::ERRO);
+}
