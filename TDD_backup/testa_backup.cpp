@@ -43,11 +43,14 @@ TEST_CASE("Teste 1 - Backup.parm não existe") {
   const char* caminho_pendrive = "../Pendrive/arquivo.txt";
   const std::string caminho_parm = "../Backup.parm";
 
+  // Decisão de fazer backup
+  bool fazer_backup = true;
 
   // Garantir que Backup.parm não existe
   std::remove(caminho_parm.c_str());
 
-  Backup::Resultado acao = backup.FazerBackup(caminho_parm,
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminho_parm,
                                               caminho_hd,
                                               caminho_pendrive);
 
@@ -77,7 +80,8 @@ TEST_CASE("Teste 2 - Backup.parm existe, backup e arquivo só no HD") {
   arquivo_parm << "arquivo.txt";
   arquivo_parm.close();
 
-  Backup::Resultado acao = backup.FazerBackup(caminho_parm,
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminho_parm,
                                               caminho_hd,
                                               caminho_pendrive);
 
@@ -113,7 +117,8 @@ TEST_CASE("Teste 3 - Backup.parm existe, backup e Pendrive desatualizado") {
   ModificarDataArquivo(caminho_pendrive, 0);
   ModificarDataArquivo(caminho_hd, 86400);
 
-  Backup::Resultado acao = backup.FazerBackup(caminho_parm,
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminho_parm,
                                               caminho_hd,
                                               caminho_pendrive);
 
@@ -149,7 +154,8 @@ TEST_CASE("Teste 4 - Backup.parm existe, backup e ambos atualizados") {
   ModificarDataArquivo(caminho_pendrive, 0);
   ModificarDataArquivo(caminho_hd, 0);
 
-  Backup::Resultado acao = backup.FazerBackup(caminho_parm,
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminho_parm,
                                               caminho_hd,
                                               caminho_pendrive);
 
@@ -185,7 +191,8 @@ TEST_CASE("Teste 5 - Backup.parm existe, backup e HD desatualizado") {
   ModificarDataArquivo(caminho_pendrive, 86400);
   ModificarDataArquivo(caminho_hd, 0);
 
-  Backup::Resultado acao = backup.FazerBackup(caminho_parm,
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminho_parm,
                                               caminho_hd,
                                               caminho_pendrive);
 
@@ -215,7 +222,8 @@ TEST_CASE("Teste 2 - Backup.parm existe, sem backup e arquivo só no HD") {
   arquivo_parm << "arquivo.txt";
   arquivo_parm.close();
 
-  Backup::Resultado acao = backup.FazerBackup(caminho_parm,
+  Backup::Resultado acao = backup.FazerBackup(fazer_backup,
+                                              caminho_parm,
                                               caminho_hd,
                                               caminho_pendrive);
 

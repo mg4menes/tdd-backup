@@ -16,7 +16,8 @@
  * @pre caminho_backup_parm deve conter algum conteúdo.
  * @return Algum valor do Enum Resultado (IMPOSSIVEL, SALVAR ou NADA).
  */
-Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
+Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
+                                      const std::string caminho_backup_parm,
                                       const std::string& caminho_hd,
                                       const std::string& caminho_pendrive) {
   assert(!caminho_backup_parm.empty());  // Assertiva de entrada (pre)
@@ -28,6 +29,10 @@ Backup::Resultado Backup::FazerBackup(const std::string caminho_backup_parm,
 
   if (!arquivo_parm.good()) {  // Verifica se backup_parm existe
     return IMPOSSIVEL;
+  }
+
+  if (!backup_solicitado) {
+    return ERRO;
   }
 
   // Backup do HD para Pendrive

@@ -21,7 +21,8 @@ class Backup {
     HD_IGUAL,
     HD_ATUALIZADO
   };
-  Resultado FazerBackup(const std::string caminho,
+  Resultado FazerBackup(bool backup_solicitado,
+                        const std::string caminho,
                         const std::string& caminho_hd,
                         const std::string& caminho_pendrive);
 
