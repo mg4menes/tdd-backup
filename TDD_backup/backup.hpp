@@ -6,6 +6,9 @@
 #include <string>
 #include <fstream>
 
+/**
+ * @brief Classe responsável pela realização do backup.
+ */
 class Backup {
  public:
   enum Resultado {
