@@ -1,0 +1,226 @@
+\doxysection{testa\+\_\+backup.\+cpp File Reference}
+\hypertarget{testa__backup_8cpp}{}\label{testa__backup_8cpp}\index{testa\_backup.cpp@{testa\_backup.cpp}}
+{\ttfamily \#include $<$utime.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include "{}backup.\+hpp"{}}\newline
+{\ttfamily \#include "{}catch.\+hpp"{}}\newline
+Include dependency graph for testa\+\_\+backup.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structCaminhosTeste}{Caminhos\+Teste}}
+\begin{DoxyCompactList}\small\item\em Contém todos os caminhos dos arquivos do programa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{testa__backup_8cpp_ad8c677caeca4e3f1e6b2894fd0906101}{CATCH\+\_\+\+CONFIG\+\_\+\+NO\+\_\+\+POSIX\+\_\+\+SIGNALS}}
+\item 
+\#define \mbox{\hyperlink{testa__backup_8cpp_a656eb5868e824d59f489f910db438420}{CATCH\+\_\+\+CONFIG\+\_\+\+MAIN}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBackup}{Backup}} \mbox{\hyperlink{testa__backup_8cpp_af5c479aec8d04cd97acba9d8e5901ccb}{Criar\+Backup}} ()
+\begin{DoxyCompactList}\small\item\em Cria um objeto do tipo \doxylink{classBackup}{Backup}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testa__backup_8cpp_a743608bd11ed506101284ef2fd99051f}{Modificar\+Data\+Arquivo}} (const std\+::string \&caminho\+\_\+arquivo, time\+\_\+t horario)
+\begin{DoxyCompactList}\small\item\em Modifica a data de modificação e acesso de um arquivo. Recebe os argumentos de caminho do arquivo e o horario em que ele será alterado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testa__backup_8cpp_ad3a3796dea3c5d28f590bd670b275898}{Criar\+Backup\+Parm}} (const std\+::string caminho\+\_\+parm)
+\begin{DoxyCompactList}\small\item\em Cria o arquivo Backup.\+parm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testa__backup_8cpp_afcb52bdeb8832556336f7dd9f9bdf435}{Apagar\+Arquivo}} (const std\+::string caminho)
+\begin{DoxyCompactList}\small\item\em Apagar o arquivo dado no caminho. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{testa__backup_8cpp_af05b21fe038d04f86b00a41b117db101}{Escrever\+No\+Arquivo}} (const std\+::string caminho, const std\+::string conteudo)
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_acb5aa5ebaded495a2a4d9892327797f7}{TEST\+\_\+\+CASE}} ("{}Teste 1 -\/ Backup.\+parm não existe"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_a44f8082ff796e5e3cfd092de20698dc9}{TEST\+\_\+\+CASE}} ("{}Teste 2 -\/ Backup.\+parm existe, backup e arquivo só no HD"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_a71ce414e83bcac57f90ca0f0862f5234}{TEST\+\_\+\+CASE}} ("{}Teste 3 -\/ Backup.\+parm existe, backup e Pendrive desatualizado"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_aa06e483b6f75eebe2dc697e70668fa44}{TEST\+\_\+\+CASE}} ("{}Teste 4 -\/ Backup.\+parm existe, backup e ambos atualizados"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_ab7cca8d2975e8ccef83a5fecde105517}{TEST\+\_\+\+CASE}} ("{}Teste 5 -\/ Backup.\+parm existe, backup e HD desatualizado"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_a134a518e103f47dfddfb7956274021df}{TEST\+\_\+\+CASE}} ("{}Teste 6 -\/ Backup.\+parm existe, sem backup e arquivo só no HD"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_a17330a95fb76af3dfe1f02b58091c221}{TEST\+\_\+\+CASE}} ("{}Teste 7 -\/ Backup.\+parm existe, sem backup e Pendrive desatualizado"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_a827bff79bfba6703e9b5053dda75e9d1}{TEST\+\_\+\+CASE}} ("{}Teste 8 -\/ Backup.\+parm existe, sem backup e ambos atualizados"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_aeba4a798f66634d0fa4187b697c032bf}{TEST\+\_\+\+CASE}} ("{}Teste 9 -\/ Backup.\+parm existe, sem backup e HD desatualizado"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_af7633cd6332619a29f4ff38edba1394c}{TEST\+\_\+\+CASE}} ("{}Teste 10 -\/ Backup.\+parm existe, backup e sem nenhum arquivo"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_a55b6005c9655a8553846ead3488a0103}{TEST\+\_\+\+CASE}} ("{}Teste 11 -\/ Backup.\+parm existe, backup e arquivo só no Pendrive"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_a75d7c4ab50778a492ec384fa8e57e46d}{TEST\+\_\+\+CASE}} ("{}Teste 12 -\/ Backup.\+parm existe, sem backup e sem nenhum arquivo"{})
+\item 
+\mbox{\hyperlink{testa__backup_8cpp_a7d8a7e2add5018fe944d0698d9162e41}{TEST\+\_\+\+CASE}} ("{}Teste 13-\/Backup.\+parm existe, sem backup e arquivo só no Pendrive"{})
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{testa__backup_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{testa__backup_8cpp_a656eb5868e824d59f489f910db438420}\index{testa\_backup.cpp@{testa\_backup.cpp}!CATCH\_CONFIG\_MAIN@{CATCH\_CONFIG\_MAIN}}
+\index{CATCH\_CONFIG\_MAIN@{CATCH\_CONFIG\_MAIN}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{CATCH\_CONFIG\_MAIN}{CATCH\_CONFIG\_MAIN}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a656eb5868e824d59f489f910db438420} 
+\#define CATCH\+\_\+\+CONFIG\+\_\+\+MAIN}
+
+\Hypertarget{testa__backup_8cpp_ad8c677caeca4e3f1e6b2894fd0906101}\index{testa\_backup.cpp@{testa\_backup.cpp}!CATCH\_CONFIG\_NO\_POSIX\_SIGNALS@{CATCH\_CONFIG\_NO\_POSIX\_SIGNALS}}
+\index{CATCH\_CONFIG\_NO\_POSIX\_SIGNALS@{CATCH\_CONFIG\_NO\_POSIX\_SIGNALS}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{CATCH\_CONFIG\_NO\_POSIX\_SIGNALS}{CATCH\_CONFIG\_NO\_POSIX\_SIGNALS}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_ad8c677caeca4e3f1e6b2894fd0906101} 
+\#define CATCH\+\_\+\+CONFIG\+\_\+\+NO\+\_\+\+POSIX\+\_\+\+SIGNALS}
+
+
+
+\label{doc-func-members}
+\Hypertarget{testa__backup_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{testa__backup_8cpp_afcb52bdeb8832556336f7dd9f9bdf435}\index{testa\_backup.cpp@{testa\_backup.cpp}!ApagarArquivo@{ApagarArquivo}}
+\index{ApagarArquivo@{ApagarArquivo}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{ApagarArquivo()}{ApagarArquivo()}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_afcb52bdeb8832556336f7dd9f9bdf435} 
+void Apagar\+Arquivo (\begin{DoxyParamCaption}\item[{const std\+::string}]{caminho}{}\end{DoxyParamCaption})}
+
+
+
+Apagar o arquivo dado no caminho. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho} & Caminho do arquivo a ser apagado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{testa__backup_8cpp_af5c479aec8d04cd97acba9d8e5901ccb}\index{testa\_backup.cpp@{testa\_backup.cpp}!CriarBackup@{CriarBackup}}
+\index{CriarBackup@{CriarBackup}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{CriarBackup()}{CriarBackup()}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_af5c479aec8d04cd97acba9d8e5901ccb} 
+\mbox{\hyperlink{classBackup}{Backup}} Criar\+Backup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Cria um objeto do tipo \doxylink{classBackup}{Backup}. 
+
+\begin{DoxyReturn}{Returns}
+Retorna o objeto do tipo \doxylink{classBackup}{Backup} 
+\end{DoxyReturn}
+\Hypertarget{testa__backup_8cpp_ad3a3796dea3c5d28f590bd670b275898}\index{testa\_backup.cpp@{testa\_backup.cpp}!CriarBackupParm@{CriarBackupParm}}
+\index{CriarBackupParm@{CriarBackupParm}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{CriarBackupParm()}{CriarBackupParm()}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_ad3a3796dea3c5d28f590bd670b275898} 
+void Criar\+Backup\+Parm (\begin{DoxyParamCaption}\item[{const std\+::string}]{caminho\+\_\+parm}{}\end{DoxyParamCaption})}
+
+
+
+Cria o arquivo Backup.\+parm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+\_\+parm} & Caminho do arquivo do Backup.\+parm. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{testa__backup_8cpp_af05b21fe038d04f86b00a41b117db101}\index{testa\_backup.cpp@{testa\_backup.cpp}!EscreverNoArquivo@{EscreverNoArquivo}}
+\index{EscreverNoArquivo@{EscreverNoArquivo}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{EscreverNoArquivo()}{EscreverNoArquivo()}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_af05b21fe038d04f86b00a41b117db101} 
+void Escrever\+No\+Arquivo (\begin{DoxyParamCaption}\item[{const std\+::string}]{caminho}{, }\item[{const std\+::string}]{conteudo}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_a743608bd11ed506101284ef2fd99051f}\index{testa\_backup.cpp@{testa\_backup.cpp}!ModificarDataArquivo@{ModificarDataArquivo}}
+\index{ModificarDataArquivo@{ModificarDataArquivo}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{ModificarDataArquivo()}{ModificarDataArquivo()}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a743608bd11ed506101284ef2fd99051f} 
+void Modificar\+Data\+Arquivo (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{caminho\+\_\+arquivo}{, }\item[{time\+\_\+t}]{horario}{}\end{DoxyParamCaption})}
+
+
+
+Modifica a data de modificação e acesso de um arquivo. Recebe os argumentos de caminho do arquivo e o horario em que ele será alterado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+\_\+arquivo} & Caminho do arquivo que terá data modificada. \\
+\hline
+{\em horario} & Horário da modificação. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{testa__backup_8cpp_acb5aa5ebaded495a2a4d9892327797f7}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_acb5aa5ebaded495a2a4d9892327797f7} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 1 -\/ Backup.\+parm não existe"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_af7633cd6332619a29f4ff38edba1394c}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_af7633cd6332619a29f4ff38edba1394c} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 10 -\/ Backup.\+parm}]{existe}{, }\item[{backup e sem nenhum arquivo"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_a55b6005c9655a8553846ead3488a0103}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a55b6005c9655a8553846ead3488a0103} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 11 -\/ Backup.\+parm}]{existe}{, }\item[{backup e arquivo só no Pendrive"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_a75d7c4ab50778a492ec384fa8e57e46d}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a75d7c4ab50778a492ec384fa8e57e46d} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 12 -\/ Backup.\+parm}]{existe}{, }\item[{sem backup e sem nenhum arquivo"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_a7d8a7e2add5018fe944d0698d9162e41}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a7d8a7e2add5018fe944d0698d9162e41} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 13-\/Backup.\+parm}]{existe}{, }\item[{sem backup e arquivo só no Pendrive"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_a44f8082ff796e5e3cfd092de20698dc9}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a44f8082ff796e5e3cfd092de20698dc9} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 2 -\/ Backup.\+parm}]{existe}{, }\item[{backup e arquivo só no HD"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_a71ce414e83bcac57f90ca0f0862f5234}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a71ce414e83bcac57f90ca0f0862f5234} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 3 -\/ Backup.\+parm}]{existe}{, }\item[{backup e Pendrive desatualizado"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_aa06e483b6f75eebe2dc697e70668fa44}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [8/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_aa06e483b6f75eebe2dc697e70668fa44} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 4 -\/ Backup.\+parm}]{existe}{, }\item[{backup e ambos atualizados"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_ab7cca8d2975e8ccef83a5fecde105517}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [9/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_ab7cca8d2975e8ccef83a5fecde105517} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 5 -\/ Backup.\+parm}]{existe}{, }\item[{backup e HD desatualizado"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_a134a518e103f47dfddfb7956274021df}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [10/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a134a518e103f47dfddfb7956274021df} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 6 -\/ Backup.\+parm}]{existe}{, }\item[{sem backup e arquivo só no HD"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_a17330a95fb76af3dfe1f02b58091c221}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [11/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a17330a95fb76af3dfe1f02b58091c221} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 7 -\/ Backup.\+parm}]{existe}{, }\item[{sem backup e Pendrive desatualizado"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_a827bff79bfba6703e9b5053dda75e9d1}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [12/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_a827bff79bfba6703e9b5053dda75e9d1} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 8 -\/ Backup.\+parm}]{existe}{, }\item[{sem backup e ambos atualizados"{}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{testa__backup_8cpp_aeba4a798f66634d0fa4187b697c032bf}\index{testa\_backup.cpp@{testa\_backup.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!testa\_backup.cpp@{testa\_backup.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [13/13]}}
+{\footnotesize\ttfamily \label{testa__backup_8cpp_aeba4a798f66634d0fa4187b697c032bf} 
+TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{"{}Teste 9 -\/ Backup.\+parm}]{existe}{, }\item[{sem backup e HD desatualizado"{}}]{}{}\end{DoxyParamCaption})}
+

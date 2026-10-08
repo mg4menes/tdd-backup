@@ -1,0 +1,217 @@
+\doxysection{Backup Class Reference}
+\hypertarget{classBackup}{}\label{classBackup}\index{Backup@{Backup}}
+
+
+Classe responsável pela realização do backup.  
+
+
+
+
+{\ttfamily \#include $<$backup.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211f}{Resultado}} \{ \newline
+\mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa1cd1f124095b860d7c2a4cb39a5d29a9}{SALVAR}}
+, \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa9c2252ce40758850fc852b4167e98a44}{RESTAURAR}}
+, \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa32b45fe19fd2b7a1945dfb5c2ebcf99d}{EXCLUIR}}
+, \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa3eef392095706bd9a9691ce199881170}{ERRO}}
+, \newline
+\mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa1787adc9045f29fcb720e436aeb427c4}{NADA}}
+, \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fadd9c39d435cd8f31f2a0c0ad54e22f4a}{IMPOSSIVEL}}
+ \}
+\item 
+enum \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1}{Comparacao\+Data\+HD}} \{ \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1adf025b5fc598769bd165c1d153503f69}{HD\+\_\+\+DESATUALIZADO}}
+, \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1a571441f4c16564b21b59c84e4f1e1685}{HD\+\_\+\+IGUAL}}
+, \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1a42ea2a1b0d23151bea771998a1d21c18}{HD\+\_\+\+ATUALIZADO}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211f}{Resultado}} \mbox{\hyperlink{classBackup_a9d2f90fae0bdb9629dac252dd5893460}{Fazer\+Backup}} (bool backup\+\_\+solicitado, const std\+::string caminho, const std\+::string \&caminho\+\_\+hd, const std\+::string \&caminho\+\_\+pendrive)
+\begin{DoxyCompactList}\small\item\em Verifica se pode realizar o backup do arquivo e realiza o backup. A função primeiro verifica se Backup.\+parm existe Caso não possa ser exista, retorna IMPOSSIVEL. Caso contrário, verifica qual o caminho do backup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBackup_a5cf4d10e3daa29493f9d8e861c76c6dd}{Copiar\+Dado}} (const std\+::string \&origem, const std\+::string \&destino)
+\begin{DoxyCompactList}\small\item\em Copia os dados do arquivo origem para o destino. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211f}{Resultado}} \mbox{\hyperlink{classBackup_ae909be33810ad9a16fa6bd57d1cdf405}{Avalia\+Data}} (bool backup\+\_\+solicitado, const std\+::string \&caminho\+\_\+hd, const std\+::string \&caminho\+\_\+pendrive)
+\begin{DoxyCompactList}\small\item\em Avalia o estado atual das datas dos arquivos. Pega os caminhos do HD e Pendrive e copia os dados necessário. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1}{Comparacao\+Data\+HD}} \mbox{\hyperlink{classBackup_a8e592374ec7d50435d5bd11c45046dbc}{Comparar\+Data}} (const std\+::string \&caminho\+\_\+hd, const std\+::string \&caminho\+\_\+pendrive)
+\begin{DoxyCompactList}\small\item\em Compara os horários dos 2 arquivos dos caminhhos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe responsável pela realização do backup. 
+
+\label{doc-enum-members}
+\Hypertarget{classBackup_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1}\index{Backup@{Backup}!ComparacaoDataHD@{ComparacaoDataHD}}
+\index{ComparacaoDataHD@{ComparacaoDataHD}!Backup@{Backup}}
+\doxysubsubsection{\texorpdfstring{ComparacaoDataHD}{ComparacaoDataHD}}
+{\footnotesize\ttfamily \label{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1} 
+enum \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1}{Backup\+::\+Comparacao\+Data\+HD}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HD\_DESATUALIZADO@{HD\_DESATUALIZADO}!Backup@{Backup}}\index{Backup@{Backup}!HD\_DESATUALIZADO@{HD\_DESATUALIZADO}}}\Hypertarget{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1adf025b5fc598769bd165c1d153503f69}\label{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1adf025b5fc598769bd165c1d153503f69} 
+HD\+\_\+\+DESATUALIZADO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HD\_IGUAL@{HD\_IGUAL}!Backup@{Backup}}\index{Backup@{Backup}!HD\_IGUAL@{HD\_IGUAL}}}\Hypertarget{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1a571441f4c16564b21b59c84e4f1e1685}\label{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1a571441f4c16564b21b59c84e4f1e1685} 
+HD\+\_\+\+IGUAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HD\_ATUALIZADO@{HD\_ATUALIZADO}!Backup@{Backup}}\index{Backup@{Backup}!HD\_ATUALIZADO@{HD\_ATUALIZADO}}}\Hypertarget{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1a42ea2a1b0d23151bea771998a1d21c18}\label{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1a42ea2a1b0d23151bea771998a1d21c18} 
+HD\+\_\+\+ATUALIZADO&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{classBackup_a3542bbb710d53198da139630b8ec211f}\index{Backup@{Backup}!Resultado@{Resultado}}
+\index{Resultado@{Resultado}!Backup@{Backup}}
+\doxysubsubsection{\texorpdfstring{Resultado}{Resultado}}
+{\footnotesize\ttfamily \label{classBackup_a3542bbb710d53198da139630b8ec211f} 
+enum \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211f}{Backup\+::\+Resultado}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SALVAR@{SALVAR}!Backup@{Backup}}\index{Backup@{Backup}!SALVAR@{SALVAR}}}\Hypertarget{classBackup_a3542bbb710d53198da139630b8ec211fa1cd1f124095b860d7c2a4cb39a5d29a9}\label{classBackup_a3542bbb710d53198da139630b8ec211fa1cd1f124095b860d7c2a4cb39a5d29a9} 
+SALVAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RESTAURAR@{RESTAURAR}!Backup@{Backup}}\index{Backup@{Backup}!RESTAURAR@{RESTAURAR}}}\Hypertarget{classBackup_a3542bbb710d53198da139630b8ec211fa9c2252ce40758850fc852b4167e98a44}\label{classBackup_a3542bbb710d53198da139630b8ec211fa9c2252ce40758850fc852b4167e98a44} 
+RESTAURAR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXCLUIR@{EXCLUIR}!Backup@{Backup}}\index{Backup@{Backup}!EXCLUIR@{EXCLUIR}}}\Hypertarget{classBackup_a3542bbb710d53198da139630b8ec211fa32b45fe19fd2b7a1945dfb5c2ebcf99d}\label{classBackup_a3542bbb710d53198da139630b8ec211fa32b45fe19fd2b7a1945dfb5c2ebcf99d} 
+EXCLUIR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERRO@{ERRO}!Backup@{Backup}}\index{Backup@{Backup}!ERRO@{ERRO}}}\Hypertarget{classBackup_a3542bbb710d53198da139630b8ec211fa3eef392095706bd9a9691ce199881170}\label{classBackup_a3542bbb710d53198da139630b8ec211fa3eef392095706bd9a9691ce199881170} 
+ERRO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NADA@{NADA}!Backup@{Backup}}\index{Backup@{Backup}!NADA@{NADA}}}\Hypertarget{classBackup_a3542bbb710d53198da139630b8ec211fa1787adc9045f29fcb720e436aeb427c4}\label{classBackup_a3542bbb710d53198da139630b8ec211fa1787adc9045f29fcb720e436aeb427c4} 
+NADA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IMPOSSIVEL@{IMPOSSIVEL}!Backup@{Backup}}\index{Backup@{Backup}!IMPOSSIVEL@{IMPOSSIVEL}}}\Hypertarget{classBackup_a3542bbb710d53198da139630b8ec211fadd9c39d435cd8f31f2a0c0ad54e22f4a}\label{classBackup_a3542bbb710d53198da139630b8ec211fadd9c39d435cd8f31f2a0c0ad54e22f4a} 
+IMPOSSIVEL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{classBackup_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBackup_ae909be33810ad9a16fa6bd57d1cdf405}\index{Backup@{Backup}!AvaliaData@{AvaliaData}}
+\index{AvaliaData@{AvaliaData}!Backup@{Backup}}
+\doxysubsubsection{\texorpdfstring{AvaliaData()}{AvaliaData()}}
+{\footnotesize\ttfamily \label{classBackup_ae909be33810ad9a16fa6bd57d1cdf405} 
+\mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211f}{Backup\+::\+Resultado}} Backup\+::\+Avalia\+Data (\begin{DoxyParamCaption}\item[{bool}]{backup\+\_\+solicitado}{, }\item[{const std\+::string \&}]{caminho\+\_\+hd}{, }\item[{const std\+::string \&}]{caminho\+\_\+pendrive}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Avalia o estado atual das datas dos arquivos. Pega os caminhos do HD e Pendrive e copia os dados necessário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+\_\+hd} & Caminho do arquivo do HD \\
+\hline
+{\em caminho\+\_\+pendrive} & Caminho do arquivo do Pendrive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+caminho\+\_\+hd deve conter um caminho válido. 
+
+caminho\+\_\+pendrive deve conter um caminho válido. 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+Algum valor do Enum \doxylink{classBackup_a3542bbb710d53198da139630b8ec211f}{Resultado} (SALVAR, NADA ou ERRO). 
+\end{DoxyReturn}
+\Hypertarget{classBackup_a8e592374ec7d50435d5bd11c45046dbc}\index{Backup@{Backup}!CompararData@{CompararData}}
+\index{CompararData@{CompararData}!Backup@{Backup}}
+\doxysubsubsection{\texorpdfstring{CompararData()}{CompararData()}}
+{\footnotesize\ttfamily \label{classBackup_a8e592374ec7d50435d5bd11c45046dbc} 
+\mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1}{Backup\+::\+Comparacao\+Data\+HD}} Backup\+::\+Comparar\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{caminho\+\_\+hd}{, }\item[{const std\+::string \&}]{caminho\+\_\+pendrive}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Compara os horários dos 2 arquivos dos caminhhos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+\_\+hd} & Caminho do arquivo do HD \\
+\hline
+{\em caminho\+\_\+pendrive} & Caminho do arquivo do Pendrive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+caminho\+\_\+hd deve conter um caminho válido. 
+
+caminho\+\_\+pendrive deve conter um caminho válido. 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+Algum valor do Avaliacao\+Data\+HD (HD\+\_\+\+DESATUALIZADO, HD\+\_\+\+IGUAL, HD\+\_\+\+ATUALIZADO). 
+\end{DoxyReturn}
+\Hypertarget{classBackup_a5cf4d10e3daa29493f9d8e861c76c6dd}\index{Backup@{Backup}!CopiarDado@{CopiarDado}}
+\index{CopiarDado@{CopiarDado}!Backup@{Backup}}
+\doxysubsubsection{\texorpdfstring{CopiarDado()}{CopiarDado()}}
+{\footnotesize\ttfamily \label{classBackup_a5cf4d10e3daa29493f9d8e861c76c6dd} 
+bool Backup\+::\+Copiar\+Dado (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{caminho\+\_\+origem}{, }\item[{const std\+::string \&}]{caminho\+\_\+destino}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Copia os dados do arquivo origem para o destino. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+\_\+origem} & Caminho do arquivo a ser copiado. \\
+\hline
+{\em caminho\+\_\+destino} & Caminho do arquivo a ser colado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+caminho\+\_\+origem deve conter um caminho válido. 
+
+caminho\+\_\+destino deve conter um caminho válido. 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+Retorna true caso a cópia seja bem sucedida. 
+\end{DoxyReturn}
+\Hypertarget{classBackup_a9d2f90fae0bdb9629dac252dd5893460}\index{Backup@{Backup}!FazerBackup@{FazerBackup}}
+\index{FazerBackup@{FazerBackup}!Backup@{Backup}}
+\doxysubsubsection{\texorpdfstring{FazerBackup()}{FazerBackup()}}
+{\footnotesize\ttfamily \label{classBackup_a9d2f90fae0bdb9629dac252dd5893460} 
+\mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211f}{Backup\+::\+Resultado}} Backup\+::\+Fazer\+Backup (\begin{DoxyParamCaption}\item[{bool}]{backup\+\_\+solicitado}{, }\item[{const std\+::string}]{caminho\+\_\+backup\+\_\+parm}{, }\item[{const std\+::string \&}]{caminho\+\_\+hd}{, }\item[{const std\+::string \&}]{caminho\+\_\+pendrive}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se pode realizar o backup do arquivo e realiza o backup. A função primeiro verifica se Backup.\+parm existe Caso não possa ser exista, retorna IMPOSSIVEL. Caso contrário, verifica qual o caminho do backup. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+\_\+backup\+\_\+parm} & Caminho do arquivo que será verificado. \\
+\hline
+{\em caminho\+\_\+hd} & Caminho do arquivo do HD \\
+\hline
+{\em caminho\+\_\+pendrive} & Caminho do arquivo do Pendrive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+caminho\+\_\+backup\+\_\+parm deve conter um caminho válido. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+A saída deve ser entre 0 e 5. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Algum valor do Enum \doxylink{classBackup_a3542bbb710d53198da139630b8ec211f}{Resultado} (IMPOSSIVEL, SALVAR, NADA ou ERRO). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{backup_8hpp}{backup.\+hpp}}\item 
+\mbox{\hyperlink{backup_8cpp}{backup.\+cpp}}\end{DoxyCompactItemize}

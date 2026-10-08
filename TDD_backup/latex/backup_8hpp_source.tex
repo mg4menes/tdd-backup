@@ -1,0 +1,44 @@
+\doxysection{backup.\+hpp}
+\hypertarget{backup_8hpp_source}{}\label{backup_8hpp_source}\mbox{\hyperlink{backup_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2026\ Marcello\ da\ Silva\ Mangueira}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ TDD\_BACKUP\_BACKUP\_HPP\_}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ TDD\_BACKUP\_BACKUP\_HPP\_}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBackup}{Backup}}\ \{}
+\DoxyCodeLine{00013\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211f}{Resultado}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa1cd1f124095b860d7c2a4cb39a5d29a9}{SALVAR}},}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa9c2252ce40758850fc852b4167e98a44}{RESTAURAR}},}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa32b45fe19fd2b7a1945dfb5c2ebcf99d}{EXCLUIR}},}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa3eef392095706bd9a9691ce199881170}{ERRO}},}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fa1787adc9045f29fcb720e436aeb427c4}{NADA}},}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211fadd9c39d435cd8f31f2a0c0ad54e22f4a}{IMPOSSIVEL}}}
+\DoxyCodeLine{00021\ \ \ \};}
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1}{ComparacaoDataHD}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1adf025b5fc598769bd165c1d153503f69}{HD\_DESATUALIZADO}},}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1a571441f4c16564b21b59c84e4f1e1685}{HD\_IGUAL}},}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1a42ea2a1b0d23151bea771998a1d21c18}{HD\_ATUALIZADO}}}
+\DoxyCodeLine{00026\ \ \ \};}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211f}{Resultado}}\ \mbox{\hyperlink{classBackup_a9d2f90fae0bdb9629dac252dd5893460}{FazerBackup}}(\textcolor{keywordtype}{bool}\ backup\_solicitado,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ caminho,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ caminho\_hd,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ caminho\_pendrive);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classBackup_a5cf4d10e3daa29493f9d8e861c76c6dd}{CopiarDado}}(\textcolor{keyword}{const}\ std::string\&\ origem,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ destino);}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{classBackup_a3542bbb710d53198da139630b8ec211f}{Resultado}}\ \mbox{\hyperlink{classBackup_ae909be33810ad9a16fa6bd57d1cdf405}{AvaliaData}}(\textcolor{keywordtype}{bool}\ backup\_solicitado,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ caminho\_hd,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ caminho\_pendrive);}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classBackup_a3200a6196b4f1f5cb196cf71b5de66c1}{ComparacaoDataHD}}\ \mbox{\hyperlink{classBackup_a8e592374ec7d50435d5bd11c45046dbc}{CompararData}}(\textcolor{keyword}{const}\ std::string\&\ caminho\_hd,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ caminho\_pendrive);}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ TDD\_BACKUP\_BACKUP\_HPP\_}}
+
+\end{DoxyCode}
