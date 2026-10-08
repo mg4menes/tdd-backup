@@ -13,7 +13,8 @@
  * @param caminho_backup_parm Caminho do arquivo que será verificado.
  * @param caminho_hd Caminho do arquivo do HD
  * @param caminho_pendrive Caminho do arquivo do Pendrive.
- * @pre caminho_backup_parm deve conter algum conteúdo.
+ * @pre caminho_backup_parm deve conter um caminho válido.
+ * @post A saída deve ser entre 0 e 5.
  * @return Algum valor do Enum Resultado (IMPOSSIVEL, SALVAR, NADA ou ERRO).
  */
 Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
@@ -54,6 +55,7 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
     return NADA;
   }
 
+  assert(retorno_avaliacao >= 0 && retorno_avaliacao <= 5);
   return retorno_avaliacao;
 }
 
@@ -62,8 +64,8 @@ Backup::Resultado Backup::FazerBackup(bool backup_solicitado,
  * Pega os caminhos do HD e Pendrive e copia os dados necessário.
  * @param caminho_hd Caminho do arquivo do HD
  * @param caminho_pendrive Caminho do arquivo do Pendrive.
- * @pre caminho_hd deve conter algum conteúdo.
- * @pre caminho_pendrive deve conter algum conteúdo.
+ * @pre caminho_hd deve conter um caminho válido.
+ * @pre caminho_pendrive deve conter um caminho válido.
  * @return Algum valor do Enum Resultado (SALVAR, NADA ou ERRO).
  */
 Backup::Resultado Backup::AvaliaData(bool backup_solicitado,
@@ -94,8 +96,8 @@ Backup::Resultado Backup::AvaliaData(bool backup_solicitado,
  * @brief Compara os horários dos 2 arquivos dos caminhhos
  * @param caminho_hd Caminho do arquivo do HD
  * @param caminho_pendrive Caminho do arquivo do Pendrive.
- * @pre caminho_hd deve conter algum conteúdo.
- * @pre caminho_pendrive deve conter algum conteúdo.
+ * @pre caminho_hd deve conter um caminho válido.
+ * @pre caminho_pendrive deve conter um caminho válido.
  * @return Algum valor do AvaliacaoDataHD (HD_DESATUALIZADO, HD_IGUAL, HD_ATUALIZADO).
  */
 Backup::ComparacaoDataHD Backup::CompararData(const std::string& caminho_hd,
@@ -121,8 +123,8 @@ Backup::ComparacaoDataHD Backup::CompararData(const std::string& caminho_hd,
  * @brief Copia os dados do arquivo origem para o destino.
  * @param caminho_origem Caminho do arquivo a ser copiado.
  * @param caminho_destino Caminho do arquivo a ser colado.
- * @pre caminho_origem deve conter algum conteúdo.
- * @pre caminho_destino deve conter algum conteúdo.
+ * @pre caminho_origem deve conter um caminho válido.
+ * @pre caminho_destino deve conter um caminho válido.
  * @return Retorna true caso a cópia seja bem sucedida.
  */
 bool Backup::CopiarDado(const std::string& caminho_origem,
