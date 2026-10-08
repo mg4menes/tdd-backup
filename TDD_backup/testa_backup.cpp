@@ -291,7 +291,7 @@ TEST_CASE("Teste 12 - Backup.parm existe, sem backup e sem nenhum arquivo") {
   REQUIRE(acao == backup.Resultado::ERRO);
 }
 
-TEST_CASE("Teste 13 - Backup.parm existe, sem backup e arquivo só no Pendrive") {
+TEST_CASE("Teste 13-Backup.parm existe, sem backup e arquivo só no Pendrive") {
   Backup backup = CriarBackup();
   CaminhosTeste caminhos;
 

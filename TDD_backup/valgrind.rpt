@@ -1,100 +1,128 @@
-==61476== Memcheck, a memory error detector
-==61476== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==61476== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
-==61476== Command: ./testa_backup
-==61476== Parent PID: 61475
-==61476== 
-==61476== Conditional jump or move depends on uninitialised value(s)
-==61476==    at 0x404BD57: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404BAD9: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404B402: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40630BB: ____C_A_T_C_H____T_E_S_T____2() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408C28B: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40546DC: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4089424: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4088DB2: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40867AA: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404D9FD: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408B1A8: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408AC91: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476== 
-==61476== Conditional jump or move depends on uninitialised value(s)
-==61476==    at 0x404BD57: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404BAD9: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404B402: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4065921: ____C_A_T_C_H____T_E_S_T____10() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408C28B: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40546DC: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4089424: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4088DB2: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40867AA: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404D9FD: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408B1A8: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408AC91: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476== 
-==61476== Conditional jump or move depends on uninitialised value(s)
-==61476==    at 0x404BD57: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404BAD9: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404B402: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40680F8: ____C_A_T_C_H____T_E_S_T____18() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408C28B: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40546DC: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4089424: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4088DB2: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40867AA: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404D9FD: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408B1A8: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408AC91: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476== 
-==61476== Conditional jump or move depends on uninitialised value(s)
-==61476==    at 0x404BD57: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404BAD9: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404B402: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40689F4: ____C_A_T_C_H____T_E_S_T____20() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408C28B: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40546DC: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4089424: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4088DB2: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40867AA: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404D9FD: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408B1A8: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408AC91: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476== 
-==61476== Conditional jump or move depends on uninitialised value(s)
-==61476==    at 0x404BD80: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404BAD9: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404B402: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40689F4: ____C_A_T_C_H____T_E_S_T____20() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408C28B: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40546DC: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4089424: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4088DB2: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40867AA: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404D9FD: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408B1A8: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408AC91: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476== 
-==61476== Conditional jump or move depends on uninitialised value(s)
-==61476==    at 0x404BD57: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404BAD9: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404B402: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40692F4: ____C_A_T_C_H____T_E_S_T____22() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408C28B: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40546DC: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4089424: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x4088DB2: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x40867AA: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x404D9FD: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408B1A8: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476==    by 0x408AC91: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
-==61476== 
-==61476== 
-==61476== HEAP SUMMARY:
-==61476==     in use at exit: 0 bytes in 0 blocks
-==61476==   total heap usage: 760 allocs, 760 frees, 721,441 bytes allocated
-==61476== 
-==61476== All heap blocks were freed -- no leaks are possible
-==61476== 
-==61476== Use --track-origins=yes to see where uninitialised values come from
-==61476== For lists of detected and suppressed errors, rerun with: -s
-==61476== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 0 from 0)
+==62854== Memcheck, a memory error detector
+==62854== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==62854== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==62854== Command: ./testa_backup
+==62854== Parent PID: 62853
+==62854== 
+==62854== Conditional jump or move depends on uninitialised value(s)
+==62854==    at 0x400E40B: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E29F: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E022: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x4019F65: ____C_A_T_C_H____T_E_S_T____2() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402EFFF: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401295E: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402DA16: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402D766: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402C28E: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400F21E: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E835: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E5EB: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854== 
+==62854== Conditional jump or move depends on uninitialised value(s)
+==62854==    at 0x400E40B: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E29F: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E022: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401B270: ____C_A_T_C_H____T_E_S_T____10() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402EFFF: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401295E: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402DA16: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402D766: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402C28E: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400F21E: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E835: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E5EB: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854== 
+==62854== Conditional jump or move depends on uninitialised value(s)
+==62854==    at 0x400E40B: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E29F: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E022: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401C522: ____C_A_T_C_H____T_E_S_T____18() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402EFFF: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401295E: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402DA16: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402D766: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402C28E: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400F21E: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E835: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E5EB: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854== 
+==62854== Conditional jump or move depends on uninitialised value(s)
+==62854==    at 0x400E40B: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E29F: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E022: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401C937: ____C_A_T_C_H____T_E_S_T____20() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402EFFF: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401295E: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402DA16: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402D766: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402C28E: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400F21E: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E835: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E5EB: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854== 
+==62854== Conditional jump or move depends on uninitialised value(s)
+==62854==    at 0x400E422: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E29F: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E022: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401C937: ____C_A_T_C_H____T_E_S_T____20() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402EFFF: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401295E: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402DA16: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402D766: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402C28E: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400F21E: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E835: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E5EB: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854== 
+==62854== Conditional jump or move depends on uninitialised value(s)
+==62854==    at 0x400E40B: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E29F: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E022: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401CD3B: ____C_A_T_C_H____T_E_S_T____22() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402EFFF: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401295E: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402DA16: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402D766: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402C28E: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400F21E: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E835: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E5EB: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854== 
+==62854== Conditional jump or move depends on uninitialised value(s)
+==62854==    at 0x400E40B: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E29F: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E022: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401D187: ____C_A_T_C_H____T_E_S_T____24() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402EFFF: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401295E: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402DA16: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402D766: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402C28E: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400F21E: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E835: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E5EB: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854== 
+==62854== Conditional jump or move depends on uninitialised value(s)
+==62854==    at 0x400E422: Backup::CompararData(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E29F: Backup::AvaliaData(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400E022: Backup::FazerBackup(bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401D187: ____C_A_T_C_H____T_E_S_T____24() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402EFFF: Catch::FreeFunctionTestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x401295E: Catch::TestCase::invoke() const (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402DA16: Catch::RunContext::invokeActiveTestCase() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402D766: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402C28E: Catch::RunContext::runTest(Catch::TestCase const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x400F21E: Catch::runTests(Catch::Ptr<Catch::Config> const&) (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E835: Catch::Session::runInternal() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854==    by 0x402E5EB: Catch::Session::run() (in /home/usuario/Desktop/trabalho2-tp2/TDD_backup/testa_backup)
+==62854== 
+==62854== 
+==62854== HEAP SUMMARY:
+==62854==     in use at exit: 0 bytes in 0 blocks
+==62854==   total heap usage: 796 allocs, 796 frees, 774,952 bytes allocated
+==62854== 
+==62854== All heap blocks were freed -- no leaks are possible
+==62854== 
+==62854== Use --track-origins=yes to see where uninitialised values come from
+==62854== For lists of detected and suppressed errors, rerun with: -s
+==62854== ERROR SUMMARY: 8 errors from 8 contexts (suppressed: 0 from 0)
