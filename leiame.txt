@@ -12,3 +12,5 @@ Para realizar os testes:
 
 Foi utilizado o cpplint, gcov, cppcheck e valgrind no desenvolvimento do programa.
 Para o TDD foi usado o catch.
+
+

@@ -1,0 +1,35 @@
+Teste de Cobertura - Caixa Aberta.
+
+Considerando:
+A - Verifica HD/Pendrive
+B - Verifica Backup.parm
+C - AvaliaData
+D - ComparaData
+E - CopiarDado
+F - Retorna avaliação
+
+Teste1 - Backup.parm não existe: AB
+
+Teste2 - Backup.parm existe, backup e arquivo só no HD: ABCDFE
+
+Teste3 - Backup.parm existe, backup e Pendrive desatualizado: ABCDEF
+
+Teste4 - Backup.parm existe, backup e ambos atualizados: ABCDF
+
+Teste5 - Backup.parm existe, backup e HD desatualizado: ABCDF
+
+Teste6 - Backup.parm existe, sem backup e arquivo só no HD: ABCDFE
+
+Teste7 - Backup.parm existe, sem backup e Pendrive desatualizado: ABCDEF
+
+Teste8 - Backup.parm existe, sem backup e ambos atualizados: ABCDF
+
+Teste9 - Backup.parm existe, sem backup e HD desatualizado: ABCDEF
+
+Teste10 - Backup.parm existe, backup e sem nenhum arquivo: ABCD
+
+Teste11 - Backup.parm existe, backup e arquivo só no Pendrive: ABCD
+
+Teste12 - Backup.parm existe, sem backup e sem nenhum arquivo: ABCD
+
+Teste13 - Backup.parm existe, sem backup e arquivo só no Pendrive: ABCD
